@@ -1,0 +1,3 @@
+[SALOME LIGHT] : @SALOMELIGHT_VERSION@
+[DEVELOPMENT]  : @SALOMELIGHT_VERSION_DEV@
+[DESCRIPTION]  : This is sample of "light" (w/o CORBA engine) SALOME module

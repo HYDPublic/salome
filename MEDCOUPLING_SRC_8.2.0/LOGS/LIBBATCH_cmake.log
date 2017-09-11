@@ -1,0 +1,15 @@
+========================================================================
+cmake /data/vsr/SALOME/8x/tmp/LIBBATCH_SRC -DCMAKE_INSTALL_PREFIX=/data/vsr/SALOME/8x/tmp/INSTALL/MEDCOUPLING/LIBBATCH  -DCMAKE_BUILD_TYPE=Debug -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_CXX_FLAGS=-Wall
+========================================================================
+-- Looking for commands needed for local submission...
+-- LIBBATCH_RM_COMMAND found : /bin/rm
+-- LIBBATCH_SH_COMMAND found : /bin/sh
+-- LIBBATCH_CP_COMMAND found : /bin/cp
+-- LIBBATCH_MKDIR_COMMAND found : /bin/mkdir
+-- LIBBATCH_RSH_COMMAND found : /usr/bin/rsh
+-- LIBBATCH_RCP_COMMAND found : /usr/bin/rcp
+-- LIBBATCH_SSH_COMMAND found : /usr/bin/ssh
+-- LIBBATCH_SCP_COMMAND found : /usr/bin/scp
+-- Looking for PThread...
+-- PThread library: /usr/lib64/libpthread.so
+-- Variable PTHREAD_ROOT_DIR was not explicitly defined: an installation was found anyway: /usr

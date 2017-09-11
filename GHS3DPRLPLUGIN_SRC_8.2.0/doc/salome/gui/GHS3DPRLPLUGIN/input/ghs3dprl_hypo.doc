@@ -1,0 +1,400 @@
+/*!
+
+\page ghs3dprl_hypo_page MG-Tetra_HPC Parameters hypothesis
+
+\n MG-Tetra Parameters hypothesis works only with <b>MG-Tetra</b>
+meshing algorithm which uses <b>MG-Tetra_HPC</b> code (formerly tepal)
+which is the parallel implementation of MG-Tetra (formerly TetMesh-GHS3D) algorithm. 
+This algorithm is a DISTENE commercial software, its use requires a license.
+\n
+See http://www.distene.com and http://www.meshgems.com/volume-meshing-meshgems-tetra.html.
+\n MG-Tetra-hpc (Tepal V3 in fact) gives the possibility to generate a partitioned
+mesh with more than 200 million tetrahedrons on computers using MPI.
+The launch of this version is described below.
+\n This is a serious alternative to MG-Tetra, which requires a much less common
+configuration with 64Go RAM to only try to make a partition of a mesh with
+200 million tetrahedrons, no result guaranteed (in 2010).
+\n
+\note The plug-in doesn't load in the memory the supposedly large resulting meshes. 
+The meshes are saved in MED files and can be imported in the user-defined location via menu File-Import-MED Files.
+\n Pay attention, that Salome GUI needs 2Go RAM to load a MED
+file with 5 million tetrahedrons.
+
+\image html ghs3dprl_parameters_basic.png
+
+<ul>
+<li>
+<b>Name</b> - allows to define the name of the hypothesis (MG-Tetra_HPC Parameters by default).
+</li>
+<li>
+<b>MED Name</b> - allows to define the path and the prefix of the 
+resulting MED files ("DOMAIN" by default).
+If the path is not defined, the environment variable $SALOME_TMP_DIR
+is used. If $SALOME_TMP_DIR is not defined as well, the environment
+variable $TMP is used.
+</li>
+<li>
+<b>Nb Partitions</b> - allows to define the number of generated MED files.
+The initial skin (triangles) will be meshed (tetrahedrons) and partitioned 
+in Nb_Part by the elementary algorithm implemented in Tepal.<br>
+</li>
+<li>
+<b>Keep Files</b> - if this box is checked, input files of MG-Tetra-hpc
+(GHS3DPRL.points and GHS3DPRL.faces) are not deleted after use (if the
+background mode was not used).
+</li>
+<li>
+<b>Tetra_hpc in Background</b> - if this box is checked, MG-Tetra-hpc execution
+and MED file generation are launched in background mode and the user
+can even exit Salome. Pay attention that in this case MG-Tetra-hpc algorithm works
+independently of "killSalome.py", and sometimes on another host.
+</li>
+<li>
+<b>Tetra_hpc Multithread</b> - if this box is checked, MG-Tetra-hpc execution
+is with mg_tetra_hpc.exe (multithread version), else mg_tetra_hpc_mpi.exe (MPI distributed version).
+</li>
+<li>
+<b>Merge subdomains</b> - if this box is checked, merge the sub-domains 
+into one mesh and write the output .mesh(b).
+</li>
+<li>
+<b>Tag subdomains</b> - if this box is checked, use the parallel sub-domain 
+index as tag into the merged output mesh or not (used in combination with the 
+<b>Merge subdomains</b> option).
+</li>
+<li>
+<b>Output interfaces</b> - if this box is checked, write the parallel
+sub-domains interface triangles into the merged output mesh (used in
+combination with the <b>Merge subdomains</b> option).
+</li>
+<li>
+<b>Discard subdomains</b> - if this box is checked, discard the parallel sub-domains 
+(mesh, global numbering and interfaces).
+</li>
+
+\image html ghs3dprl_parameters_advanced.png
+
+In \b Advanced tab page you can specify not exposed options of MG_Tetra-hpc.
+
+<b>Add option</b> adds a line to the table where you can type an option and its value as text.
+A check box in the first column activates/deactivates the option of the current row. A deactivated option will be erased upon pressing \a Ok.
+
+<h1>Modifying MG-Tetra-hpc Advanced Parameters</h1><br>
+MG-Tetra_HPC plug-in launches a standalone binary
+executable <b>tetrahpc2med</b>.<br>
+tetrahpc2med launches MG_Tetra-hpc, waits for the end of computation, and
+converts the resulting output files into MED files.<br>
+Some advanced optional parameters are accessible as arguments.<br>
+
+If <b>Keep Files</b> option is checked, it is possible to re-launch 
+\a tetrahpc2med or MG-Tetra-hpc in the Terminal as a command with
+custom parameters.<br> 
+
+<li>
+<b>Advanced tetrahpc2med Parameters</b> - type <b>tetrahpc2med --help</b> in the Terminal. <p>
+
+\verbatim
+myname@myhost > /export/home/myname/salome_7/GHS3DPRLPLUGIN/bin/salome/tetrahpc2med --help
+tetrahpc2med V3.0 (MED3+tetra-hpc) Available options:
+   --help               : produces this help message
+   --casename           : path and name of input tetrahpc2med files which are
+                           - output files of GHS3DPRL_Plugin .mesh
+                           - output file of GHS3DPRL_Plugin casename_skin.med (optional)
+                          with initial skin and its initial groups
+   --number             : number of partitions
+   --medname            : path and name of output MED files
+   --limitswap          : max size of working cpu memory (Mo) (before swapping on .temp files)
+   --verbose            : trace of execution (0->6)
+   --test               : more tests about joints, before generation of output files
+   --menu               : a GUI menu for option number
+   --launchtetra        : also launch tetra-hpc on files casename.mesh and option number
+   --merge_subdomains   : merge the subdomains into one mesh and write the output .mesh(b) file
+   --tag_subdomains     : use the parallel subdomain index as tag into the merged output mesh
+                            to identify the parallel subdomains (used in combination with the merge_subdomains option)
+   --output_interfaces  : write the parallel subdomains interface triangles into the merged output mesh
+                            (used in combination with the merge_subdomains option)
+   --discard_subdomains : discard the parallel subdomains informations output (mesh, global numbering and interfaces)
+   --background         : force background mode from launch tetra-hpc and generation of final MED files (big meshes)
+   --deletegroups       : regular expression (see QRegExp) which matches unwanted groups in final MED files
+                            (try --deletegroups="(\bJOINT)"
+                            (try --deletegroups="(\bAll_Nodes|\bAll_Faces)"
+                            (try --deletegroups="((\bAll_|\bNew_)(N|F|T))"
+example:
+   tetrahpc2med --casename=/tmp/GHS3DPRL --number=2 --medname=DOMAIN --limitswap=1000 --verbose=0 --test=yes --menu=no --launchtetra=no
+
+\endverbatim
+\n
+</li>
+<li>
+<b>Advanced tetra_hpc parameters (2014)</b> <p>
+
+\verbatim
+
+Usage: tetra_hpc.exe [options]
+
+Options: 
+
+     Short option (if it exists)
+    /    Long option
+   |    /   Description
+   |   |   /
+   v   v  v
+
+     --help
+          print this help
+
+     --in <input mesh file name>
+          Sets the input file
+          (MANDATORY)
+
+     --out <output mesh file name>
+          Sets the output file
+          (MANDATORY)
+
+     --merge_subdomains <merge>
+          Describes whether to merge the subdomains into one mesh and write the
+          output .mesh(b) file or not.
+          if <merge> is
+             yes : the subdomains will be merged into one mesh and written to
+          the output .mesh(b),
+             no : the subdomains will not be merged.
+          default : no
+
+     --tag_subdomains <tag>
+          Describes whether to use the parallel subdomain index as tag into the
+          merged output mesh or not (used in combination with the
+          merge_subdomains option).
+          if <tag> is
+             yes : the tags of the tetrahedra in the merged output will
+          identify the parallel subdomains,
+             no : the tag will keep its standard meaning of volume domain.
+          default : no
+
+     --output_interfaces <output_interfaces>
+          Describes whether to write the parallel subdomains interface
+          triangles into the merged output mesh or not (used in combination
+          with the merge_subdomains option).
+          if <output_interfaces> is
+             yes : the parallel subdomains interface triangles will be written
+          into the merged output mesh,
+             no : they will not be added to the merged output mesh.
+          default : no
+
+     --verbose <verbose>
+          Set the verbosity level, increasing from 0 to 10.
+           <verbose> values are increasing from 0 to 10 :
+             0 : no details
+            10 : very detailed
+          default : 3
+
+     --discard_subdomains <discard>
+          Describes whether to discard the parallel subdomains (mesh, global
+          numbering and interfaces) or not.
+          if <discard> is
+             yes : the subdomain informations (mesh, global numbering and
+          interfaces) will be discarded,
+             no : they will be written to disk as output.
+          default : no
+
+\endverbatim
+\n
+</li>
+
+<h1>Saving user's preferred MG-Tetra_HPC Advanced Parameters</h1><br>
+MG-Tetra_HPC plug-in launches standalone binary executable tetrahpc2med.<br>
+You may rename file tetrahpc2med as tetrahpc2med.exe for example, and replace
+tetrahpc2med by a shell script at your convenience to overriding parameters.
+<br>... or else $PATH modification... .<br>
+<li>
+<b>Advanced tetrahpc2med Parameters</b> - overriding parameter deletegroups<p>
+You may rename tetrahpc2med as tetrahpc2med.exe for example.
+
+\code
+#!/bin/bash
+#script tetrahpc2med overriding parameter deletegroups
+#we have renamed binary executable tetrahpc2med as tetrahpc2med.exe
+#echo tetrahpc2med initial parameters are $1 $2 $3 $4 ... or $*
+#$0 is ignored
+
+tetrahpc2med.exe $* --deletegroups="(\bAll_Nodes|\bAll_Faces)"
+
+\endcode
+\n
+</li>
+ 
+<h1>tetra_hpc and MPI use.</h1><br>
+This 2014 beta-version needs MPI, (openmpi was used). To use it you have to proceed as below.
+
+<li>
+<b>Obsolete example tepal_v2_mpirun.</b><p>
+
+\code
+
+#!/bin/bash
+#script tepal overriding launching Tepal_V2.0 with MPI (tepal run 64 bits only).
+#we have renamed binary executable tepal as tepal64_v2.exe.
+#typical command to launch tepal v1 :
+#tepal -f /tmp/myname/GHS3DPRL -n 16 > /tmp/myname/tepal.log
+#this file is an example to transform this call for tepal v2.0, 
+#   (beta version using .mesh input file)
+#you have to adapt for your convenience.
+
+#first problem  is convert v1 input files GHS3DPRL.faces and GHS3DPRL.points 
+#               to v2 input file GHS3DPRL.mesh.
+#second problem is to launch on heterogeneous system linux cluster of 
+#               2 hosts (64 bits) of 8 nodes (by example)
+#               with different 2 executables codes linked on 2 different
+#               openmpi shared library codes.
+#third problem  is convert tepal v2 output files GHS3DPRL*.mesh
+#               to v1 input files GHS3DPRL*.faces an GHS3DPRL*.points.
+
+#you have to work on the same physical disk and same path input and output files : $SAME_DIR
+#you have to work on different physical disk but same path and name for executable files 
+#    (and shared libraries) : $DIFF_DIR
+
+echo "parameter 0="$0
+echo "parameter 1="$1
+echo "parameter 2="$2
+echo "parameter 3="$3
+echo "parameter 4="$4
+
+export SAME_DIR=/same_physical_disk_and_same path/tmp
+export DIFF_DIR=/different_physical_disk_but_same path/myname
+
+#copy input local files from local current directory (something like /tmp/myname)
+#in this case we need /tmp/myname and $SAME_DIR different
+cd $SAME_DIR
+rm *
+cp $2* .
+
+export IN_FILES=`basename $2`
+export IN_DIR=`dirname $2`
+#created .mesh from .faces et .points
+/through_salome_path/facespoints2mesh.py $IN_FILES
+
+#there are 2 executable openmpi and library through 2 physical DIFF_DIR
+export PATH=$DIFF_DIR/openmpi-1.3.1_install/bin:${PATH}
+export LD_LIBRARY_PATH=$DIFF_DIR/openmpi-1.3.1_install/lib:${LD_LIBRARY_PATH}
+
+#there are 2 executables tepal_v2 through 2 physical DIFF_DIR
+export LD_LIBRARY_PATH=$DIFF_DIR/tepal-2.0.0/bin/Linux_64:${LD_LIBRARY_PATH}
+export PATH=$DIFF_DIR/tepal-2.0.0/bin/Linux_64:$PATH
+
+#small test between friends
+#rm hostnames.log
+#mpirun -n $4 hostname >> hostnames.log
+
+#there necessary set env licence file for tepal v2
+export DISTENE_LICENSE_FILE="Use global envvar: DLIM8VAR"
+export DLIM8VAR="dlim8 1:1:29030@is142356/0016175ef08c::a1ba...9e19"
+export SIMULOGD_LICENSE_FILE=29029@is142356 
+export LICENSE_FILE=/product/distene/dlim8.var.sh
+
+#mpirun with necessary set environment
+export TMP_ENV="-x PATH -x LD_LIBRARY_PATH -x DISTENE_LICENSE_FILE -x DLIM8VAR \
+                -x SIMULOGD_LICENSE_FILE -x LICENSE_FILE"
+#mpirun $TMPENV -n $4 which tepal64_v2.exe >> hostnames.log
+
+#real mpirun uncomment after verify small test
+mpirun $TMPENV -n $4 tepal64_v2.exe --in $IN_FILES.mesh --out $IN_FILES.mesh --verbose 100
+
+#convert output files tepalv1 format
+/through_salome_path/mesh2facespoints.py $IN_FILES
+
+#copy output files from $SAME_DIR to local current directory (something like /tmp/myname)
+cp -f hostnames.log $IN_DIR
+cp -f $IN_FILES* $IN_DIR
+
+#ls -al $SAME_DIR
+#cat $SAME_DIR/hostnames.log
+#cat /tmp/myname/tepal.log
+
+\endcode
+\n
+</li>
+
+<h1>TUI use.</h1><br>
+
+<li>
+<b>example ex30_tepal.py.</b><p>
+
+\code
+
+#!/bin/python
+import os
+
+import GEOM
+from salome.geom import geomBuilder
+geompy = geomBuilder.New(salome.myStudy)
+
+import SMESH
+from salome.smesh import smeshBuilder
+smesh = smeshBuilder.New(salome.myStudy)
+
+# Parameters
+# ----------
+
+results = "/tmp/ZZ"
+
+radius =  50
+height = 200
+
+# Build a cylinder
+# ----------------
+
+base = geompy.MakeVertex(0, 0, 0)
+direction = geompy.MakeVectorDXDYDZ(0, 0, 1)
+
+cylinder = geompy.MakeCylinder(base, direction, radius, height)
+
+geompy.addToStudy(cylinder, "Cylinder")
+
+# Define a mesh on a geometry
+# ---------------------------
+
+m = smesh.Mesh(cylinder)
+
+# 2D mesh with BLSURF
+# -------------------
+
+algo2d = m.Triangle(smeshBuilder.BLSURF)
+
+algo2d.SetPhysicalMesh(1)
+algo2d.SetPhySize(5)
+
+algo2d.SetGeometricMesh(0)
+
+# 3D mesh with tetra-hpc (formerly tepal v3 (2014))
+# ----------------------------------------------------
+
+algo3d = m.Tetrahedron(smeshBuilder.MG_Tetra_HPC)
+
+algo3d.SetMEDName(results)
+algo3d.SetNbPart(4)
+algo3d.SetBackground(False)
+algo3d.SetMultithread(False)
+algo3d.SetKeepFiles(False)
+algo3d.SetGradation(1.05)
+algo3d.SetMinSize(0)
+algo3d.SetMaxSize(0)
+
+
+# Launch meshers
+# --------------
+
+status = m.Compute()
+
+# Test if ok
+# ----------
+
+if os.access(results+".xml", os.F_OK):
+    print "Ok: tetra_hpc"
+else:
+    print "KO: tetra_hpc"
+\endcode
+\n
+</li>
+</ul>
+
+
+*/

@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='iso-8859-1' ?>
+<proc name="schema_1">
+   <property name="DefaultStudyID" value="6"/>
+   <type name="string" kind="string"/>
+   <struct name="Engines/dataref">
+      <member name="ref" type="string"/>
+   </struct>
+   <type name="bool" kind="bool"/>
+   <sequence name="boolvec" content="bool"/>
+   <type name="double" kind="double"/>
+   <sequence name="dblevec" content="double"/>
+   <objref name="file" id="file"/>
+   <type name="int" kind="int"/>
+   <sequence name="intvec" content="int"/>
+   <struct name="stringpair">
+      <member name="name" type="string"/>
+      <member name="value" type="string"/>
+   </struct>
+   <sequence name="propvec" content="stringpair"/>
+   <objref name="pyobj" id="python:obj:1.0"/>
+   <sequence name="seqbool" content="bool"/>
+   <sequence name="seqboolvec" content="boolvec"/>
+   <sequence name="seqdblevec" content="dblevec"/>
+   <sequence name="seqintvec" content="intvec"/>
+   <sequence name="stringvec" content="string"/>
+   <sequence name="seqstringvec" content="stringvec"/>
+   <container name="DefaultContainer">
+      <property name="container_name" value="FactoryServer"/>
+      <property name="name" value="localhost"/>
+   </container>
+   <container name="FactoryServer">
+      <property name="container_name" value="FactoryServer"/>
+      <property name="name" value="localhost"/>
+      <property name="type" value="multi"/>
+   </container>
+   <service name="InitPoint">
+      <component>RANDOMIZER</component>
+      <load container="FactoryServer"/>
+      <method>InitPoint</method>
+      <outport name="theX" type="double"/>
+      <outport name="theY" type="double"/>
+   </service>
+   <forloop name="ForLoop" nsteps="500">
+      <bloc name="Bloc">
+         <service name="NextIteration">
+            <node>InitPoint</node>
+            <method>NextIteration</method>
+            <outport name="return" type="int"/>
+         </service>
+         <service name="NextPoint">
+            <component>SIERPINSKY</component>
+            <load container="FactoryServer"/>
+            <method>NextPoint</method>
+            <inport name="X" type="double"/>
+            <inport name="Y" type="double"/>
+            <inport name="iter" type="int"/>
+            <outport name="nextX" type="double"/>
+            <outport name="nextY" type="double"/>
+         </service>
+         <control> <fromnode>NextIteration</fromnode> <tonode>NextPoint</tonode> </control>
+         <datalink control="false">
+            <fromnode>NextIteration</fromnode> <fromport>return</fromport>
+            <tonode>NextPoint</tonode> <toport>iter</toport>
+         </datalink>
+      </bloc>
+      <datalink control="false">
+         <fromnode>Bloc.NextPoint</fromnode> <fromport>nextX</fromport>
+         <tonode>Bloc.NextPoint</tonode> <toport>X</toport>
+      </datalink>
+      <datalink control="false">
+         <fromnode>Bloc.NextPoint</fromnode> <fromport>nextY</fromport>
+         <tonode>Bloc.NextPoint</tonode> <toport>Y</toport>
+      </datalink>
+   </forloop>
+   <service name="ExportToJPEG">
+      <node>ForLoop.Bloc.NextPoint</node>
+      <method>ExportToJPEG</method>
+      <inport name="fileName" type="string"/>
+      <inport name="size" type="int"/>
+      <outport name="return" type="bool"/>
+   </service>
+   <service name="Reset">
+      <node>ForLoop.Bloc.NextPoint</node>
+      <method>Reset</method>
+   </service>
+   <control> <fromnode>InitPoint</fromnode> <tonode>ForLoop</tonode> </control>
+   <control> <fromnode>ForLoop</fromnode> <tonode>ExportToJPEG</tonode> </control>
+   <control> <fromnode>Reset</fromnode> <tonode>ForLoop</tonode> </control>
+   <datalink control="false">
+      <fromnode>InitPoint</fromnode> <fromport>theX</fromport>
+      <tonode>ForLoop.Bloc.NextPoint</tonode> <toport>X</toport>
+   </datalink>
+   <datalink control="false">
+      <fromnode>InitPoint</fromnode> <fromport>theY</fromport>
+      <tonode>ForLoop.Bloc.NextPoint</tonode> <toport>Y</toport>
+   </datalink>
+   <parameter>
+      <tonode>ExportToJPEG</tonode><toport>fileName</toport>
+      <value><string>/tmp/sierpinsky_schema1.jpg</string></value>
+   </parameter>
+   <parameter>
+      <tonode>ExportToJPEG</tonode><toport>size</toport>
+      <value><int>200</int></value>
+   </parameter>
+   <parameter>
+      <tonode>ForLoop</tonode><toport>nsteps</toport>
+      <value><int>500</int></value>
+   </parameter>
+   <presentation name="ExportToJPEG" x="599.75" y="98.75" width="158" height="90" expanded="1" expx="599.75" expy="98.75" expWidth="158" expHeight="90" shownState="0"/>
+   <presentation name="Reset" x="1.75" y="44.75" width="158" height="36" expanded="1" expx="1.75" expy="44.75" expWidth="158" expHeight="36" shownState="0"/>
+   <presentation name="ForLoop" x="195.875" y="34.125" width="367.75" height="219.25" expanded="1" expx="195.875" expy="34.125" expWidth="367.75" expHeight="219.25" shownState="0"/>
+   <presentation name="InitPoint" x="1.75" y="98.75" width="158" height="90" expanded="1" expx="1.75" expy="98.75" expWidth="158" expHeight="90" shownState="0"/>
+   <presentation name="ForLoop.Bloc.NextPoint" x="195.75" y="33.25" width="158" height="117" expanded="1" expx="195.75" expy="33.25" expWidth="158" expHeight="117" shownState="0"/>
+   <presentation name="ForLoop.Bloc" x="6" y="61" width="357.75" height="154.25" expanded="1" expx="6" expy="61" expWidth="357.75" expHeight="154.25" shownState="0"/>
+   <presentation name="ForLoop.Bloc.NextIteration" x="1.75" y="60.25" width="158" height="63" expanded="1" expx="1.75" expy="60.25" expWidth="158" expHeight="63" shownState="0"/>
+   <presentation name="__ROOT__" x="0" y="0" width="761.75" height="257.375" expanded="1" expx="0" expy="0" expWidth="761.75" expHeight="257.375" shownState="0"/>
+</proc>

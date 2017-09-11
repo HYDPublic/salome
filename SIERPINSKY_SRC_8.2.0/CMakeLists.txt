@@ -1,0 +1,270 @@
+# Copyright (C) 2012-2016  OPEN CASCADE
+#
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2.1 of the License, or (at your option) any later version.
+#
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+#
+# See http://www.salome-platform.org/ or email : webmaster.salome@opencascade.com
+#
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8.8 FATAL_ERROR)
+PROJECT(SalomeSIERPINSKY C CXX)
+
+# Ensure a proper linker behavior:
+CMAKE_POLICY(SET CMP0003 NEW)
+IF(WIN32)
+  CMAKE_POLICY(SET CMP0020 OLD) # disable automatic linking to qtmain.lib 
+ENDIF(WIN32)
+
+# Versioning
+# ===========
+# Project name, upper case
+STRING(TOUPPER ${PROJECT_NAME} PROJECT_NAME_UC)
+
+SET(${PROJECT_NAME_UC}_MAJOR_VERSION 8)
+SET(${PROJECT_NAME_UC}_MINOR_VERSION 2)
+SET(${PROJECT_NAME_UC}_PATCH_VERSION 0)
+SET(${PROJECT_NAME_UC}_VERSION
+  ${${PROJECT_NAME_UC}_MAJOR_VERSION}.${${PROJECT_NAME_UC}_MINOR_VERSION}.${${PROJECT_NAME_UC}_PATCH_VERSION})
+SET(${PROJECT_NAME_UC}_VERSION_DEV 0)
+
+# Common CMake macros
+# ===================
+SET(CONFIGURATION_ROOT_DIR $ENV{CONFIGURATION_ROOT_DIR} CACHE PATH "Path to the Salome CMake configuration files")
+IF(EXISTS ${CONFIGURATION_ROOT_DIR})
+  LIST(APPEND CMAKE_MODULE_PATH "${CONFIGURATION_ROOT_DIR}/cmake")
+  INCLUDE(SalomeMacros)
+ELSE()
+  MESSAGE(FATAL_ERROR "We absolutely need the Salome CMake configuration files, please define CONFIGURATION_ROOT_DIR !")
+ENDIF()
+
+# Find KERNEL
+# ===========
+SET(KERNEL_ROOT_DIR $ENV{KERNEL_ROOT_DIR} CACHE PATH "Path to the Salome KERNEL")
+IF(EXISTS ${KERNEL_ROOT_DIR})
+  LIST(APPEND CMAKE_MODULE_PATH "${KERNEL_ROOT_DIR}/salome_adm/cmake_files")
+  INCLUDE(SalomeMacros)
+  FIND_PACKAGE(SalomeKERNEL REQUIRED)
+  KERNEL_WITH_CORBA() # check whether KERNEL builded with CORBA
+ELSE(EXISTS ${KERNEL_ROOT_DIR})
+  MESSAGE(FATAL_ERROR "We absolutely need a Salome KERNEL, please define KERNEL_ROOT_DIR")
+ENDIF(EXISTS ${KERNEL_ROOT_DIR})
+
+# Platform setup
+# ==============
+INCLUDE(SalomeSetupPlatform)   # From KERNEL
+# Always build libraries as shared objects:
+SET(BUILD_SHARED_LIBS TRUE)
+# Local macros:
+LIST(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/adm_local/cmake_files")
+
+# User options
+# ============
+OPTION(SALOME_BUILD_TESTS "Build SALOME tests" ON)
+# OPTION(SALOME_BUILD_DOC "Generate SALOME SIERPINSKY documentation" ON) #For use in the future
+OPTION(SALOME_SIERPINSKY_USE_LIBGD "Enable export to JPEG" ON)
+MARK_AS_ADVANCED(SALOME_SIERPINSKY_USE_LIBGD)
+
+IF(SALOME_BUILD_TESTS)
+  ENABLE_TESTING()
+ENDIF()
+
+##
+## From KERNEL:
+##
+
+# Various
+# Python
+FIND_PACKAGE(SalomePythonInterp REQUIRED)
+FIND_PACKAGE(SalomePythonLibs REQUIRED)
+# Boost
+FIND_PACKAGE(SalomeBoost REQUIRED)
+# CORBA
+FIND_PACKAGE(SalomeOmniORB REQUIRED)
+FIND_PACKAGE(SalomeOmniORBPy REQUIRED)
+# HDF5
+FIND_PACKAGE(SalomeHDF5 REQUIRED COMPONENTS C)
+
+# Find GUI
+# ===========
+
+SET(GUI_ROOT_DIR $ENV{GUI_ROOT_DIR} CACHE PATH "Path to the Salome GUI")
+IF(EXISTS ${GUI_ROOT_DIR})
+  LIST(APPEND CMAKE_MODULE_PATH "${GUI_ROOT_DIR}/adm_local/cmake_files")
+  FIND_PACKAGE(SalomeGUI REQUIRED)
+  SALOME_GUI_WITH_CORBA() # check whether GUI builded with CORBA
+  ADD_DEFINITIONS(${GUI_DEFINITIONS})
+  INCLUDE_DIRECTORIES(${GUI_INCLUDE_DIRS})
+ELSE(EXISTS ${GUI_ROOT_DIR})
+  MESSAGE(FATAL_ERROR "We absolutely need a Salome GUI, please define GUI_ROOT_DIR")
+ENDIF(EXISTS ${GUI_ROOT_DIR})
+
+##
+## From GUI:
+##
+
+# Various
+# Qt
+IF(NOT SALOME_GUI_BUILD_WITH_QT5)
+  FIND_PACKAGE(SalomeQt4 REQUIRED COMPONENTS QtCore QtGui)
+ELSE()
+  FIND_PACKAGE(SalomeQt5 REQUIRED)
+ENDIF()
+# OCCT
+FIND_PACKAGE(SalomeCAS REQUIRED)
+# VTK
+FIND_PACKAGE(SalomeVTK REQUIRED)
+
+# Find RANDOMIZER
+# ===========
+
+SET(RANDOMIZER_ROOT_DIR $ENV{RANDOMIZER_ROOT_DIR} CACHE PATH "Path to the Salome RANDOMIZER")
+IF(EXISTS ${RANDOMIZER_ROOT_DIR})
+  LIST(APPEND CMAKE_MODULE_PATH "${RANDOMIZER_ROOT_DIR}/adm_local/cmake_files")
+  FIND_PACKAGE(SalomeRANDOMIZER REQUIRED)
+  ADD_DEFINITIONS(${RANDOMIZER_DEFINITIONS})
+  INCLUDE_DIRECTORIES(${RANDOMIZER_INCLUDE_DIRS})
+ELSE(EXISTS ${RANDOMIZER_ROOT_DIR})
+  MESSAGE(FATAL_ERROR "We absolutely need a Salome RANDOMIZER, please define RANDOMIZER_ROOT_DIR")
+ENDIF(EXISTS ${RANDOMIZER_ROOT_DIR})
+
+# Find SMESH
+# ===========
+
+SET(SMESH_ROOT_DIR $ENV{SMESH_ROOT_DIR} CACHE PATH "Path to the Salome SMESH")
+IF(EXISTS ${SMESH_ROOT_DIR})
+  LIST(APPEND CMAKE_MODULE_PATH "${SMESH_ROOT_DIR}/adm_local/cmake_files")
+  FIND_PACKAGE(SalomeSMESH REQUIRED)
+  ADD_DEFINITIONS(${SMESH_DEFINITIONS})
+  INCLUDE_DIRECTORIES(${SMESH_INCLUDE_DIRS})
+ELSE(EXISTS ${SMESH_ROOT_DIR})
+  MESSAGE(FATAL_ERROR "We absolutely need a Salome SMESH, please define SMESH_ROOT_DIR")
+ENDIF(EXISTS ${SMESH_ROOT_DIR})
+
+##
+## SIERPINSKY specifics
+##
+
+# libgd
+IF(SALOME_SIERPINSKY_USE_LIBGD)
+  FIND_PACKAGE(SalomeLibGd)
+  SALOME_LOG_OPTIONAL_PACKAGE(LibGd SALOME_SIERPINSKY_USE_LIBGD)
+  ADD_DEFINITIONS(-DWITH_LIBGD)
+ENDIF(SALOME_SIERPINSKY_USE_LIBGD)
+
+# Detection summary:
+SALOME_PACKAGE_REPORT_AND_CHECK()
+
+# Directories
+# (default values taken from KERNEL)
+# ===========
+SET(SALOME_INSTALL_BINS "${SALOME_INSTALL_BINS}" CACHE PATH "Install path: SALOME binaries")
+SET(SALOME_INSTALL_LIBS "${SALOME_INSTALL_LIBS}" CACHE PATH "Install path: SALOME libs")
+SET(SALOME_INSTALL_IDLS "${SALOME_INSTALL_IDLS}" CACHE PATH "Install path: SALOME IDL files")
+SET(SALOME_INSTALL_HEADERS "${SALOME_INSTALL_HEADERS}" CACHE PATH "Install path: SALOME headers")
+SET(SALOME_INSTALL_SCRIPT_SCRIPTS "${SALOME_INSTALL_SCRIPT_SCRIPTS}" CACHE PATH 
+   "Install path: SALOME scripts")
+SET(SALOME_INSTALL_SCRIPT_DATA "${SALOME_INSTALL_SCRIPT_DATA}" CACHE PATH 
+   "Install path: SALOME script data")
+SET(SALOME_INSTALL_SCRIPT_PYTHON "${SALOME_INSTALL_SCRIPT_PYTHON}" CACHE PATH 
+   "Install path: SALOME Python scripts")
+SET(SALOME_INSTALL_APPLISKEL_SCRIPTS "${SALOME_INSTALL_APPLISKEL_SCRIPTS}" CACHE PATH 
+   "Install path: SALOME application skeleton - scripts")
+SET(SALOME_INSTALL_APPLISKEL_PYTHON "${SALOME_INSTALL_APPLISKEL_PYTHON}" CACHE PATH 
+   "Install path: SALOME application skeleton - Python")
+SET(SALOME_INSTALL_PYTHON "${SALOME_INSTALL_PYTHON}" CACHE PATH "Install path: SALOME Python stuff")
+SET(SALOME_INSTALL_PYTHON_SHARED "${SALOME_INSTALL_PYTHON_SHARED}" CACHE PATH 
+   "Install path: SALOME Python shared modules")
+SET(SALOME_INSTALL_CMAKE_LOCAL "${SALOME_INSTALL_CMAKE_LOCAL}" CACHE PATH 
+    "Install path: local SALOME CMake files") 
+SET(SALOME_INSTALL_AMCONFIG_LOCAL "${SALOME_INSTALL_AMCONFIG_LOCAL}" CACHE PATH
+  "Install path: local SALOME config files (obsolete, to be removed)")
+SET(SALOME_INSTALL_RES "${SALOME_INSTALL_RES}" CACHE PATH "Install path: SALOME resources")
+SET(SALOME_INSTALL_DOC "${SALOME_INSTALL_DOC}" CACHE PATH "Install path: SALOME documentation")
+
+# Specific to SIERPINSKY:
+SET(SALOME_SIERPINSKY_INSTALL_RES_DATA "${SALOME_INSTALL_RES}/sierpinsky" CACHE PATH 
+    "Install path: SALOME SIERPINSKY specific data")
+
+MARK_AS_ADVANCED(SALOME_INSTALL_BINS SALOME_INSTALL_LIBS SALOME_INSTALL_IDLS SALOME_INSTALL_HEADERS)
+MARK_AS_ADVANCED(SALOME_INSTALL_SCRIPT_SCRIPTS SALOME_INSTALL_SCRIPT_DATA SALOME_INSTALL_SCRIPT_PYTHON)
+MARK_AS_ADVANCED(SALOME_INSTALL_APPLISKEL_SCRIPTS  SALOME_INSTALL_APPLISKEL_PYTHON SALOME_INSTALL_CMAKE_LOCAL SALOME_INSTALL_RES)
+MARK_AS_ADVANCED(SALOME_INSTALL_PYTHON SALOME_INSTALL_PYTHON_SHARED)
+MARK_AS_ADVANCED(SALOME_INSTALL_AMCONFIG_LOCAL SALOME_INSTALL_DOC)
+MARK_AS_ADVANCED(SALOME_SIERPINSKY_INSTALL_RES_DATA)
+
+# Accumulate environment variables for SIERPINSKY module
+SALOME_ACCUMULATE_ENVIRONMENT(PYTHONPATH NOCHECK ${CMAKE_INSTALL_PREFIX}/${SALOME_INSTALL_BINS}
+                                                 ${CMAKE_INSTALL_PREFIX}/${SALOME_INSTALL_PYTHON})
+SALOME_ACCUMULATE_ENVIRONMENT(LD_LIBRARY_PATH NOCHECK ${CMAKE_INSTALL_PREFIX}/${SALOME_INSTALL_LIBS}) 
+
+# Sources 
+# ========
+
+ADD_SUBDIRECTORY(idl)
+ADD_SUBDIRECTORY(adm_local)
+ADD_SUBDIRECTORY(resources)
+ADD_SUBDIRECTORY(src)
+ADD_SUBDIRECTORY(bin)
+
+# Header configuration
+# ====================
+SALOME_XVERSION(${PROJECT_NAME})
+SALOME_CONFIGURE_FILE(SIERPINSKY_version.h.in SIERPINSKY_version.h INSTALL ${SALOME_INSTALL_HEADERS})
+
+# Configuration export
+# (here only the level 1 prerequisites are exposed)
+# ====================
+INCLUDE(CMakePackageConfigHelpers)
+
+# List of targets in this project we want to make visible to the rest of the world.
+# They all have to be INSTALL'd with the option "EXPORT ${PROJECT_NAME}TargetGroup"
+SET(_${PROJECT_NAME}_exposed_targets 
+  SIERPINSKYEngine SIERPINSKY SalomeIDLSIERPINSKY
+)
+
+# Add all targets to the build-tree export set
+EXPORT(TARGETS ${_${PROJECT_NAME}_exposed_targets}
+  FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}Targets.cmake)
+
+# Create the configuration files:
+#   - in the build tree:
+
+# Ensure the variables are always defined for the configure:
+SET(SMESH_ROOT_DIR "${SMESH_ROOT_DIR}")
+SET(RANDOMIZER_ROOT_DIR "${RANDOMIZER_ROOT_DIR}")
+SET(LIBGD_ROOT_DIR "${LIBGD_ROOT_DIR}")
+ 
+SET(CONF_INCLUDE_DIRS "${PROJECT_SOURCE_DIR}/include" "${PROJECT_BINARY_DIR}/include")
+
+# Build variables that will be expanded when configuring Salome<MODULE>Config.cmake:
+SALOME_CONFIGURE_PREPARE(LibGd)
+
+CONFIGURE_PACKAGE_CONFIG_FILE(${PROJECT_NAME}Config.cmake.in
+    ${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
+    INSTALL_DESTINATION "${SALOME_INSTALL_CMAKE_LOCAL}"
+    PATH_VARS CONF_INCLUDE_DIRS SALOME_INSTALL_CMAKE_LOCAL CMAKE_INSTALL_PREFIX
+    SMESH_ROOT_DIR LIBGD_ROOT_DIR RANDOMIZER_ROOT_DIR)
+
+WRITE_BASIC_PACKAGE_VERSION_FILE(${PROJECT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake
+    VERSION ${${PROJECT_NAME_UC}_VERSION}
+    COMPATIBILITY AnyNewerVersion)
+
+# Install the CMake configuration files:
+INSTALL(FILES
+  "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
+  "${PROJECT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
+  DESTINATION "${SALOME_INSTALL_CMAKE_LOCAL}")
+
+# Install the export set for use with the install-tree
+INSTALL(EXPORT ${PROJECT_NAME}TargetGroup DESTINATION "${SALOME_INSTALL_CMAKE_LOCAL}" 
+  FILE ${PROJECT_NAME}Targets.cmake)

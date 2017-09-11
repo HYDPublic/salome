@@ -1,0 +1,61 @@
+#ifndef _DSCCODE_IDL_
+#define _DSCCODE_IDL_
+
+#include "DSC_Engines.idl"
+#include "SALOME_Exception.idl"
+
+module DSCCODE {
+
+    interface DSCCODA: Engines::Superv_Component
+    {
+        void prun(in long niter) raises (SALOME::SALOME_Exception);
+        void trun(in long niter) raises (SALOME::SALOME_Exception);
+    };
+
+    interface DSCCODB: Engines::Superv_Component
+    {
+        void prun(in long niter) raises (SALOME::SALOME_Exception);
+        void trun(in long niter) raises (SALOME::SALOME_Exception);
+    };
+
+    interface DSCCODC: Engines::Superv_Component
+    {
+        void prun(in long niter) raises (SALOME::SALOME_Exception);
+        void trun(in long niter) raises (SALOME::SALOME_Exception);
+    };
+
+    interface DSCCODD: Engines::Superv_Component
+    {
+        void prun(in long niter) raises (SALOME::SALOME_Exception);
+        void trun(in long niter) raises (SALOME::SALOME_Exception);
+    };
+    interface NEUTRO: Engines::Superv_Component
+    {
+        void prun() raises (SALOME::SALOME_Exception);
+        void trun(in double dt) raises (SALOME::SALOME_Exception);
+    };
+    interface FLUIDE: Engines::Superv_Component
+    {
+        void prun() raises (SALOME::SALOME_Exception);
+        void trun(in double dt) raises (SALOME::SALOME_Exception);
+    };
+    interface SOLIDE: Engines::Superv_Component
+    {
+        void prun() raises (SALOME::SALOME_Exception);
+        void trun(in double dt) raises (SALOME::SALOME_Exception);
+    };
+    interface INTERPI: Engines::Superv_Component
+    {
+        void prun() raises (SALOME::SALOME_Exception);
+        void trun() raises (SALOME::SALOME_Exception);
+    };
+    interface PYCOMPO: Engines::Superv_Component
+    {
+        void run() raises (SALOME::SALOME_Exception);
+        void gnuplot() raises (SALOME::SALOME_Exception);
+        void visu() raises (SALOME::SALOME_Exception);
+    };
+};
+
+#endif // _DSCCODE_IDL_
+

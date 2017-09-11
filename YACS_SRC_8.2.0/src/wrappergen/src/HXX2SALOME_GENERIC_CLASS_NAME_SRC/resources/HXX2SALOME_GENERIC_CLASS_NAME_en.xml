@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='us-ascii'?>
+<!DOCTYPE application PUBLIC "" "desktop.dtd">
+<!--
+  Copyright (C) 2006-2016  CEA/DEN, EDF R&D
+
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2.1 of the License, or (at your option) any later version.
+
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the Free Software
+  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+
+  See http://www.salome-platform.org/ or email : webmaster.salome@opencascade.com
+
+-->
+<application title="HXX2SALOME_GENERIC_CLASS_NAME component" date="9/12/2001" author="C Caremoli" appId="HXX2SALOME_GENERIC_CLASS_NAME" >
+<desktop>
+<!-- ### MENUBAR ###  -->
+<menubar>
+
+ <menu-item label-id="File" item-id="1" pos-id="">
+  <submenu label-id="Hello" item-id="19" pos-id="9">
+   <popup-item item-id="190" pos-id="" label-id="MyNewItem" icon-id="" tooltip-id="" accel-id="" toggle-id="" execute-action=""/>
+  </submenu>
+  <endsubmenu />
+ </menu-item>
+
+ <menu-item label-id="HXX2SALOME_GENERIC_CLASS_NAME" item-id="90" pos-id="3">
+  <popup-item item-id="901" label-id="Get banner" icon-id="" tooltip-id="Get HXX2SALOME_GENERIC_CLASS_NAME banner" accel-id="" toggle-id="" execute-action=""/>
+
+ </menu-item>
+</menubar>
+<!-- ### TOOLBAR ###  -->
+<toolbar label-id="HXX2SALOME_GENERIC_CLASS_NAME">
+ <toolbutton-item item-id="901" label-id="Get banner" icon-id="ExecHXX2SALOME_GENERIC_CLASS_NAME.png" tooltip-id="Get HXX2SALOME_GENERIC_CLASS_NAME banner" accel-id="" toggle-id="" execute-action=""/>
+</toolbar>
+</desktop>
+</application>
+

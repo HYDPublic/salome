@@ -1,0 +1,65 @@
+<!--
+  Copyright (C) 2007-2015  CEA/DEN, EDF R&D, OPEN CASCADE
+
+  Copyright (C) 2003-2007  OPEN CASCADE, EADS/CCR, LIP6, CEA/DEN,
+  CEDRAT, EDF R&D, LEG, PRINCIPIA R&D, BUREAU VERITAS
+
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2.1 of the License, or (at your option) any later version.
+
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the Free Software
+  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+
+  See http://www.salome-platform.org/ or email : webmaster.salome@opencascade.com
+
+-->
+<document>
+  <!-- import LightApp.xml file -->
+  <import name="LightApp"/>
+  <section name="launch">
+    <!-- SALOME launching parameters -->
+    <parameter name="logger"     value="no"/>
+    <parameter name="xterm"      value="no"/>
+    <parameter name="portkill"   value="no"/>
+    <parameter name="killall"    value="no"/>
+    <parameter name="pinter"     value="no"/>
+    <parameter name="noexcepthandler"  value="no"/>
+    <parameter name="modules"    value="GEOM,SMESH,HEXABLOCK,MED,YACS,PARAVIS"/>
+    <parameter name="pyModules"  value=""/>
+    <parameter name="embedded"   value="SalomeAppEngine,study,cppContainer,registry,moduleCatalog"/>
+    <parameter name="standalone" value=""/>
+  </section>
+  <section name="language">
+    <!-- Language settings (resource manager)-->
+    <parameter name="translators" value="%P_msg_%L.qm|%PM_msg_%L.qm|%P_icons.qm|%P_images.qm|%PM_images.qm"/>
+  </section>
+  <section name="ObjectBrowser" >
+    <!-- Object Browser preferences -->
+    <parameter name="visibility_column_id_1" value="false" />
+    <parameter name="visibility_column_id_2" value="false" />
+    <parameter name="visibility_column_id_3" value="false" />
+    <parameter name="visibility_column_id_4" value="false" />
+  </section>
+  <section name="FileDlg">
+    <!-- "Open/Save File" dialog box preferences-->
+    <parameter name="QuickDirList" value="${DATA_DIR}" />
+  </section>
+  <section name="Study">
+    <!-- General study settings -->
+    <parameter name="autoload_light_modules"     value="true" />
+    <parameter name="store_positions"     value="true" />
+    <parameter name="store_tool_positions"     value="true" />
+    <parameter name="store_visual_state"  value="false" />
+    <parameter name="pydump_publish"      value="true" />
+    <parameter name="multi_file_dump"     value="false" />
+    <parameter name="pydump_save_gui"     value="false" />
+  </section>
+</document>

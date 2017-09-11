@@ -1,0 +1,19 @@
+
+Installation
+=============
+To install this SALOME module use the traditional :
+
+   - ./configure --prefix=<where you want to install it> --with-kernel=<where the SALOME KERNEL is installed>
+   - make
+   - make install
+
+Installation from CVS sources
+===============================
+If you get it from CVS, run ./autogen.sh before.
+
+
+Using it
+==========
+1. Add the module to your SALOME application.
+2. Execute the calculation schemas in resources (stream2.xml, calcium4.xml) with 
+   the SALOME module YACS (new supervisor module in SALOME 4.x platform).

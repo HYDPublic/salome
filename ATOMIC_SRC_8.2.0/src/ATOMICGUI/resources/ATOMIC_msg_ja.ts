@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="1.1" language="ja" sourcelanguage="en">
+  <context>
+    <name>@default</name>
+    <message>
+      <source>ATOMICGUI_EXPORT_XML</source>
+      <translation>XML ファイルのエクスポート</translation>
+    </message>
+    <message>
+      <source>ATOMICGUI_IMPORT_XML</source>
+      <translation>XML ファイルのインポート</translation>
+    </message>
+    <message>
+      <source>ATOMICGUI_NEW_NAME</source>
+      <translation>新しい名前:</translation>
+    </message>
+    <message>
+      <source>ATOMICGUI_NONAME</source>
+      <translation>無名</translation>
+    </message>
+    <message>
+      <source>ATOMICGUI_RENAME_OBJECT</source>
+      <translation>オブジェクト名の変更</translation>
+    </message>
+    <message>
+      <source>ATOMIC_ATOM</source>
+      <translation>原子</translation>
+    </message>
+    <message>
+      <source>ATOMIC_MOLECULE</source>
+      <translation>分子</translation>
+    </message>
+    <message>
+      <source>ATOMIC_ROOT_TOOLTIP</source>
+      <translation>原子モジュール ルート オブジェクト</translation>
+    </message>
+    <message>
+      <source>BUT_OK</source>
+      <translation>OK(&amp;O)</translation>
+    </message>
+    <message>
+      <source>MEN_FILE</source>
+      <translation>ファイル(&amp;F)</translation>
+    </message>
+    <message>
+      <source>WRN_EXPORT_FAILED</source>
+      <translation>XML ファイルをエクスポートすることはできません。</translation>
+    </message>
+    <message>
+      <source>WRN_IMPORT_FAILED</source>
+      <translation>XML ファイルをインポートすることはできません。</translation>
+    </message>
+    <message>
+      <source>WRN_WARNING</source>
+      <translation>警告 ！</translation>
+    </message>
+    <message>
+      <source>XML_FILES</source>
+      <translation>XML ファイル (*.xml)</translation>
+    </message>
+  </context>
+  <context>
+    <name>ATOMICGUI</name>
+    <message>
+      <source>MEN_ADD_ATOM</source>
+      <translation>原子を追加します。</translation>
+    </message>
+    <message>
+      <source>MEN_ATOMIC</source>
+      <translation>原子</translation>
+    </message>
+    <message>
+      <source>MEN_CREATE_MOL</source>
+      <translation>分子を作成します。</translation>
+    </message>
+    <message>
+      <source>MEN_DELETE_OBJ</source>
+      <translation>削除</translation>
+    </message>
+    <message>
+      <source>MEN_EDIT</source>
+      <translation>編集(&amp;E)</translation>
+    </message>
+    <message>
+      <source>MEN_EXPORT_XML</source>
+      <translation>エクスポート...</translation>
+    </message>
+    <message>
+      <source>MEN_IMPORT_XML</source>
+      <translation>インポート...</translation>
+    </message>
+    <message>
+      <source>MEN_RENAME</source>
+      <translation>名前変更</translation>
+    </message>
+    <message>
+      <source>STB_ADD_ATOM</source>
+      <translation>原子を選択した原子構成に追加します。</translation>
+    </message>
+    <message>
+      <source>STB_CREATE_MOL</source>
+      <translation>新しい分子を作成します。</translation>
+    </message>
+    <message>
+      <source>STB_DELETE_OBJ</source>
+      <translation>選択オブジェクトの削除</translation>
+    </message>
+    <message>
+      <source>STB_EXPORT_XML</source>
+      <translation>原子のデータを XML ファイルにエクスポートします。</translation>
+    </message>
+    <message>
+      <source>STB_IMPORT_XML</source>
+      <translation>原子のデータを XML ファイルからインポートします。</translation>
+    </message>
+    <message>
+      <source>STB_RENAME</source>
+      <translation>選択した原子または原子構成の名前を変更します。</translation>
+    </message>
+    <message>
+      <source>TOP_ADD_ATOM</source>
+      <translation>原子を追加します。</translation>
+    </message>
+    <message>
+      <source>TOP_CREATE_MOL</source>
+      <translation>分子を作成します。</translation>
+    </message>
+    <message>
+      <source>TOP_DELETE_OBJ</source>
+      <translation>削除</translation>
+    </message>
+    <message>
+      <source>TOP_EXPORT_XML</source>
+      <translation>XML にエクスポートします。</translation>
+    </message>
+    <message>
+      <source>TOP_IMPORT_XML</source>
+      <translation>XML からのインポート</translation>
+    </message>
+    <message>
+      <source>TOP_RENAME</source>
+      <translation>名前変更</translation>
+    </message>
+  </context>
+  <context>
+    <name>ATOMICGUI_AddAtomDlg</name>
+    <message>
+      <source>CAPTION</source>
+      <translation>原子の追加</translation>
+    </message>
+  </context>
+</TS>

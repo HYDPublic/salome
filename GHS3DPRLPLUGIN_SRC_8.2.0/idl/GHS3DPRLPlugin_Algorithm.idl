@@ -1,0 +1,83 @@
+// Copyright (C) 2007-2016  CEA/DEN, EDF R&D
+//
+// This library is free software; you can redistribute it and/or
+// modify it under the terms of the GNU Lesser General Public
+// License as published by the Free Software Foundation; either
+// version 2.1 of the License, or (at your option) any later version.
+//
+// This library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public
+// License along with this library; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+//
+// See http://www.salome-platform.org/ or email : webmaster.salome@opencascade.com
+//
+
+// ---
+// File   : GHS3DPRLPlugin_Algorithm.idl
+// Author : Christian VAN WAMBEKE (CEA)
+// ---
+//
+#ifndef _SMESH_GHS3DPRLALGORITHM_IDL_
+#define _SMESH_GHS3DPRLALGORITHM_IDL_
+
+#include "SMESH_Hypothesis.idl"
+
+/*!
+ * GHS3DPRLPlugin: interfaces to GHS3DPRL related hypotheses and algorithms
+ */
+module GHS3DPRLPlugin
+{
+  /*!
+   * GHS3DPRLPlugin_GHS3DPRL: interface of GHS3DPRL algorithm
+   */
+  interface GHS3DPRLPlugin_GHS3DPRL : SMESH::SMESH_3D_Algo
+  {
+  };
+
+  /*!
+   * GHS3DPRLPlugin_Hypothesis: interface of "GHS3DPRL parameters" hypothesis
+   */
+  interface GHS3DPRLPlugin_Hypothesis : SMESH::SMESH_Hypothesis
+  {
+    void SetMEDName(in string value);
+    string GetMEDName();
+
+    void SetNbPart(in long value);
+    long GetNbPart();
+
+    void SetKeepFiles(in boolean value);
+    boolean GetKeepFiles();
+
+    void SetBackground(in boolean value);
+    boolean GetBackground();
+
+    void SetMultithread(in boolean value);
+    boolean GetMultithread();
+
+    //void SetToMeshHoles(in boolean value);
+    //boolean GetToMeshHoles();
+    
+    //void SetToMergeSubdomains(in boolean value);
+    //boolean GetToMergeSubdomains();
+
+    void SetGradation(in float value);
+    float GetGradation();
+
+    void SetMinSize(in float value);
+    float GetMinSize();
+
+    void SetMaxSize(in float value);
+    float GetMaxSize();
+
+    void SetAdvancedOption( in string optAndVals );
+    string GetAdvancedOption();
+  };
+
+};
+
+#endif

@@ -1,0 +1,54 @@
+// Copyright (C) 2005-2016  OPEN CASCADE
+//
+// This library is free software; you can redistribute it and/or
+// modify it under the terms of the GNU Lesser General Public
+// License as published by the Free Software Foundation; either
+// version 2.1 of the License, or (at your option) any later version.
+//
+// This library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public
+// License along with this library; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+//
+// See http://www.salome-platform.org/ or email : webmaster.salome@opencascade.com
+//
+
+///////////////////////////////////////////////////////////
+// File    : Sierpinsky.idl
+// Author  : Vadim SANDLER (OCN)
+// Created : 13/07/05
+///////////////////////////////////////////////////////////
+
+#ifndef __SIERPINSKY_IDL
+#define __SIERPINSKY_IDL
+
+#include "SALOME_Component.idl"
+
+module SIERPINSKY_ORB {
+
+  interface SIERPINSKY : Engines::EngineComponent {
+
+    // Initializes engine with three reference points
+    void Init( in double X1, in double Y1, in double X2, in double Y2, in double X3, in double Y3 );
+
+    // Initializes engine with three default reference points: (0.5, 1), (0, 0), (1, 0)
+    void Reset();
+
+    // Generates next iteration point
+    void NextPoint( in double X, in double Y, in long iter, out double nextX, out double nextY );
+
+    // Exports data to the JPEG image
+    boolean ExportToJPEG( in string fileName, in long size );
+
+    // Exports data to the MED file
+    boolean ExportToMED( in string fileName, in double size );
+
+  };
+
+};
+
+#endif // __SIERPINSKY_IDL

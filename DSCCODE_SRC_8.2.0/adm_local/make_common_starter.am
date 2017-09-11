@@ -1,0 +1,11 @@
+salomeincludedir = $(prefix)/include/salome
+salomelibdir   =   $(prefix)/lib/salome
+salomeidldir   =   $(prefix)/idl/salome
+salomepythondir =  $(prefix)/lib/python$(PYTHON_VERSION)/site-packages/salome
+salomesharedir=    $(prefix)/share/salome/resources
+
+IDL_INCLUDES = -I$(KERNEL_ROOT_DIR)/idl/salome
+KERNEL_LIBS= -L$(KERNEL_ROOT_DIR)/lib/salome -lSalomeContainer -lOpUtil -lSalomeDSCContainer -lSalomeDSCSuperv -lSalomeDatastream -lSalomeDSCSupervBasic -lCalciumC
+KERNEL_INCLUDES= -I$(KERNEL_ROOT_DIR)/include/salome $(OMNIORB_INCLUDES) $(BOOST_CPPFLAGS)
+
+C_DEPEND_FLAG=-MM -MG

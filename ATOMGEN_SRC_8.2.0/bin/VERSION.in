@@ -1,0 +1,3 @@
+[SALOME ATOMGEN] : @SALOMEATOMGEN_VERSION@
+[DEVELOPMENT]    : @SALOMEATOMGEN_VERSION_DEV@
+[DESCRIPTION]    : This is sample of Python CORBA-based SALOME module (part of SALOME tutorial)

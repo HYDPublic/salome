@@ -1,0 +1,34 @@
+<proc>
+
+    <!-- types -->
+    <container name="A"> <property name="hostname" value="localhost"/> </container>
+    <container name="B"> <property name="hostname" value="localhost"/> </container>
+
+    <!-- inline -->
+
+      <service name="canal" >
+        <component>PYCOMPO</component>
+        <method>run</method>
+        <load container="A"/>
+        <instream name="tabin" type="CALCIUM_double"/>
+        <outstream name="tabout" type="CALCIUM_double"/>
+      </service>
+
+      <service name="crayon" >
+        <component>PYCOMPO</component>
+        <method>run</method>
+        <load container="B"/>
+        <instream name="tabin" type="CALCIUM_double"/>
+        <outstream name="tabout" type="CALCIUM_double"/>
+      </service>
+
+      <stream>
+        <fromnode>crayon</fromnode> <fromport>tabout</fromport>
+        <tonode>canal</tonode> <toport>tabin</toport>
+      </stream>
+      <stream>
+        <fromnode>canal</fromnode> <fromport>tabout</fromport>
+        <tonode>crayon</tonode> <toport>tabin</toport>
+      </stream>
+
+</proc>

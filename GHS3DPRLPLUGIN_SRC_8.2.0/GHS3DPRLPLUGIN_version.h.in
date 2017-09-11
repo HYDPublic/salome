@@ -1,0 +1,46 @@
+// Copyright (C) 2007-2016  CEA/DEN, EDF R&D
+//
+// This library is free software; you can redistribute it and/or
+// modify it under the terms of the GNU Lesser General Public
+// License as published by the Free Software Foundation; either
+// version 2.1 of the License, or (at your option) any later version.
+//
+// This library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public
+// License along with this library; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+//
+// See http://www.salome-platform.org/ or email : webmaster.salome@opencascade.com
+//
+
+// ---
+// File   : GHS3DPRLPLUGIN_version.h
+// Author : Vadim SANDLER, Open CASCADE S.A.S (vadim.sandler@opencascade.com)
+// ---
+//
+#if !defined(__GHS3DPRLPLUGIN_VERSION_H__)
+#define __GHS3DPRLPLUGIN_VERSION_H__
+
+/*!
+  Specify version of SALOME GHS3DPRLPLUGIN module, as follows
+
+  GHS3DPRLPLUGIN_VERSION_MAJOR       : (integer) number identifying major version
+  GHS3DPRLPLUGIN_VERSION_MINOR       : (integer) number identifying minor version
+  GHS3DPRLPLUGIN_VERSION_MAINTENANCE : (integer) number identifying maintenance version
+  GHS3DPRLPLUGIN_VERSION_STR         : (string)  complete version number "major.minor.maintenance"
+  GHS3DPRLPLUGIN_VERSION             : (hex)     complete version number (major << 16) + (minor << 8) + maintenance
+  GHS3DPRLPLUGIN_DEVELOPMENT         : (integer) indicates development version when set to 1
+*/
+
+#define GHS3DPRLPLUGIN_VERSION_MAJOR       @SALOMEGHS3DPRLPLUGIN_MAJOR_VERSION@
+#define GHS3DPRLPLUGIN_VERSION_MINOR       @SALOMEGHS3DPRLPLUGIN_MINOR_VERSION@
+#define GHS3DPRLPLUGIN_VERSION_MAINTENANCE @SALOMEGHS3DPRLPLUGIN_PATCH_VERSION@
+#define GHS3DPRLPLUGIN_VERSION_STR         "@SALOMEGHS3DPRLPLUGIN_VERSION@"
+#define GHS3DPRLPLUGIN_VERSION             @SALOMEGHS3DPRLPLUGIN_XVERSION@
+#define GHS3DPRLPLUGIN_DEVELOPMENT         @SALOMEGHS3DPRLPLUGIN_VERSION_DEV@
+
+#endif // __GHS3DPRLPLUGIN_VERSION_H__

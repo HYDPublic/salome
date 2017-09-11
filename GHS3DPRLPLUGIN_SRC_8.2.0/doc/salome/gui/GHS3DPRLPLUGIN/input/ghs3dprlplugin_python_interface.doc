@@ -1,0 +1,20 @@
+/*!
+
+\page ghs3dprlplugin_python_interface_page Python Interface
+
+\note The former name of MG-Tetra_HPC meshing algorithm is \a GHS3DPRL and names
+of the corresponding classes and modules still include \a "GHS3DPRL".
+
+Python package GHS3DPRLPluginBuilder defines
+GHS3DPRLPluginBuilder.GHS3DPRL_Algorithm class providing access
+to the MG-Tetra_HPC meshing algorithm and its parameters.
+
+You can get an instance of this class by calling
+smeshBuilder.Mesh.Tetrahedron(algo=smeshBuilder.MG_Tetra_HPC) or 
+smeshBuilder.Mesh.Tetrahedron(algo=smeshBuilder.GHS3DPRL). This call
+creates an algorithm (if not yet exist), assigns it to the mesh and
+returns an instance of GHS3DPRLPluginBuilder.GHS3DPRL_Algorithm to the caller.
+
+The class of algorithm has methods to set up meshing parameters.
+
+*/

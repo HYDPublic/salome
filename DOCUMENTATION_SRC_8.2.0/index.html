@@ -1,0 +1,188 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="GENERATOR" content="Mozilla/4.73 [en] (WinNT; I) [Netscape]">
+
+<title>SALOME Developer Documentation</title>
+
+<style type="text/css">
+    .tag        { padding: 0px 5px 0px 5px; font-weight: bold; text-align: right; }
+    .old        { background-color: #FF0000; color: #FFFFFF; }
+    .french     { background-color: #BFBFBF; color: #E5E5E5; }
+    .descr      { font-size: 15px; font-family: Arial, Helvetica, sans-serif; }
+    li.old      { list-style-type:square; }
+    table.index {
+                    padding: 5px;
+                    border-spacing: 50px 20px;
+                    font-size: 15px;
+                    font-family: Arial, Helvetica, sans-serif;
+                    border: 0px solid;
+                }
+    th { color: #175783; border-bottom: 3px solid; font-size: 20px; }
+
+    .flagfr {
+        border: 1px solid #bbb;
+        position: relative;
+        background-color: #ffffff;
+    }
+    .flagfr:before {
+        content: "";
+        position: absolute;
+        left: 0; bottom: 0; top: 0;
+        background-color: #0000ff;
+        width: 33%;
+    }
+    .flagfr:after {
+        content: "";
+        position: absolute;
+        right: 0; bottom: 0; top: 0;
+        background-color: #ff0000;
+        width: 33%;
+    }
+    span.flagfr { color: transparent; font-size: 10px; }
+
+</style>
+
+</head>
+
+<body bgcolor="#ffffff" text="#000000" link="#0000ee" alink="#0000ee" vlink="#551a8b">
+
+<div style="text-align: left; background-color: #175783; border: 1px solid; height: 80px; background-repeat: no-repeat; margin-bottom: 10px;">
+      <img src="head.png" border=0>
+</div>
+
+<div align="center">
+<h1>Developer's Documentation</h1>
+</div>
+
+<table width="100%" class="index">
+<tr>
+    <th width="50%">By Themes</td>
+    <th>By Modules</td>
+</tr>
+<tr valign="top">
+    <td>
+        <h4>Architecture</h4>
+        <ul>
+            <li><a href="gui/GUI/salome_architecture_page.html">SALOME architecture</a></li>
+            <li>SALOME GUI Architecture <a href="extra/SALOME_GUI_Architecture.pdf">pdf</a>
+            &nbsp;<span class="tag old" title="NOT UP TO DATE">!</span></li>
+            <li><a href="gui/YACS/rappels.html">Reminders about the SALOME platform</a></li>
+        </ul>
+
+        <h4>Module Development</h4>
+        <ul>
+            <li>See the <a href="#SALOME_Tutorial">Tutorial</a> module</li>
+            <li>Guide for the development of a SALOME module
+                <ul>
+                <li>in <a href="gui/YACS/pysalome.html">Python</a>
+                <li>in <a href="gui/YACS/cppsalome.html">C++</a></li>
+                </ul>
+            </li>
+            <li>Implement Dump Python <a href="extra/DumpPython_Extension.pdf">pdf</a></li>
+        </ul>
+
+        <h4>Mesh</h4>
+        <ul>
+            <li>Use of SMDS API (SMESH SALOME Module) <a href="extra/SALOME_4.1.2_SMDS_reference_guide.pdf">pdf</a>
+            &nbsp;<span class="tag old" title="NOT UP TO DATE">!</span></li>
+            <li>Integration of new meshing algorithm as plug-in to SALOME Mesh module <a href="extra/SALOME_Mesh_Plugins.pdf">pdf</a></li>
+        </ul>
+
+        <h4>Code Coupling</h4>
+        <ul>
+            <li><a href="gui/YACS/components.html">Integration of components into the SALOME environment</a></li>
+            <li>Normalisation des maillages et des champs pour le couplage <a href="extra/Normalisation_pour_le_couplage_de_codes.pdf">pdf</a>
+            &nbsp;<span class="flagfr">FR</span></li>
+            <li>Documentation of the Interface for Code Coupling : ICoCo <a href="extra/Interface_for_Code_Coupling.pdf">pdf</a></li>
+            <li>Le couplage de codes paralleles dans la plateforme SALOME <a href="extra/Couplage_de_codes_paralleles.pdf">pdf</a>
+            &nbsp;<span class="flagfr">FR</span></li>
+            <li>D&eacute;monstrateur couplage fluide structure EDF <a href="extra/Demonstrateur_couplage_fluide_structure_EDF.pdf">pdf</a>
+            &nbsp;<span class="flagfr">FR</span></li>
+        </ul>
+
+        <h4>Create an application</h4>
+        <ul>
+            <li><a href="gui/KERNEL/SALOME_Application.html">Salome Application Concept</a></li>
+        </ul>
+
+        <h4>Compilation</h4>
+        <ul>
+            <li><a href="gui/KERNEL/INSTALL.html">Installation instructions</a></li>
+            <li><a href="dev/cmake/html/index.html">CMake build procedure</a></li>
+        </ul>
+
+        <h4>Development</h4>
+        <ul>
+            <li><a href="dev/git/html/Git_Simple_Write_Procedure.html">Contributing to the SALOME project with Git</a></li>
+        </ul>
+
+    </td>
+
+    <td>
+    <h4>Modules</h4>
+        <ul>
+        <li><a href="KERNEL_index.html">Kernel</a></li>
+        <li><a href="GUI_index.html">GUI</a></li>
+        <li><a href="GEOM_index.html">Geometry</a></li>
+        <li><a href="SMESH_index.html">Mesh</a></li>
+        <li><a href="MED_index.html">Med</a></li>
+        <li><a href="PARAVIS_index.html">ParaVis</a></li>
+        <li><a href="YACS_index.html">YACS</a></li>
+        <li><a href="JOBMANAGER_index.html">JobManager</a></li>
+        <li><a href="HEXABLOCK_index.html">HexaBlock</a></li>
+        <li><a href="HOMARD_index.html">Homard</a></li>
+    </ul>
+
+    <h4>Plugins</h4>
+    <ul>
+        <li><a href="NETGENPLUGIN_index.html">Netgen Plugin for Mesh module</a></li>
+        <li><a href="BLSURFPLUGIN_index.html">MG-CADSurf Plugin for Mesh module</a></li>
+        <li><a href="GHS3DPLUGIN_index.html">MG-Tetra Plugin for Mesh module</a></li>
+        <li><a href="GHS3DPRLPLUGIN_index.html">MG-Tetra Parallel Plugin for Mesh module</a></li>
+        <li><a href="HexoticPLUGIN_index.html">MG-Hexa Plugin for Mesh module</a></li>
+        <li><a href="HYBRIDPLUGIN_index.html">Hybrid Plugin for Mesh module</a></li>
+    </ul>
+
+    <h4>Samples</h4>
+    <ul>
+        <li><a href="HELLO_index.html">HELLO</a></li>
+        <li><a href="PYHELLO_index.html">PYHELLO</a></li>
+    </ul>
+
+    <h4>Tools</h4>
+    <ul>
+        <li><a href="dev/MEDCoupling/index.html">MEDCoupling</a></li>
+    </ul>
+    </td>
+</tr>
+</table>
+
+<div style="margin: 10px;">
+    <span class="tag old" title="NOT UP TO DATE">!</span> = Document is not up to date
+</div>
+
+
+<hr/>
+
+<div style="margin: 10px;">
+<a name="SALOME_Tutorial" />
+<h3>SALOME Tutorial</h3>
+<span class="descr">
+The SALOME Tutorial provides an introduction to the developing of an application based on SALOME.<br/>
+
+The tutorial is located in the <b>TUTORIAL_SRC_X.Y.Z</b> directory.
+</span>
+</div>
+
+<br><br>
+<div style="text-align: center; background-color: #D9f4fd; border: 1px solid #AAAAAA; font-family: Arial, Helvetica, sans-serif; font-size: 11px; padding: 10px; margin-top: 15px;">
+Copyright &copy; 2007-2016  CEA/DEN, EDF R&amp;D, OPEN CASCADE<br>
+Copyright &copy; 2003-2007  OPEN CASCADE, EADS/CCR, LIP6, CEA/DEN, CEDRAT, EDF R&amp;D, LEG, PRINCIPIA R&amp;D, BUREAU VERITAS<br>
+</div>
+
+</body>
+</html>
+
+

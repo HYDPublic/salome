@@ -1,0 +1,19 @@
+<!DOCTYPE Atomic>
+<document>
+ <molecule name="H2O" >
+  <atom x="0" y="0" z="0" name="H1" />
+  <atom x="0" y="0" z="0" name="H2" />
+  <atom x="0" y="0" z="0" name="O" />
+ </molecule>
+ <molecule name="C2H5OH" >
+  <atom x="0" y="0" z="0" name="C1" />
+  <atom x="0" y="0" z="0" name="C2" />
+  <atom x="0" y="0" z="0" name="H1" />
+  <atom x="0" y="0" z="0" name="H2" />
+  <atom x="0" y="0" z="0" name="H3" />
+  <atom x="0" y="0" z="0" name="H4" />
+  <atom x="0" y="0" z="0" name="H5" />
+  <atom x="0" y="0" z="0" name="O" />
+  <atom x="0" y="0" z="0" name="H" />
+ </molecule>
+</document>

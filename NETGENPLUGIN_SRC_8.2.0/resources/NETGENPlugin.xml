@@ -1,0 +1,180 @@
+<?xml version='1.0' encoding='us-ascii'?>
+<!DOCTYPE meshers PUBLIC "" "desktop.dtd">
+<!--
+  Copyright (C) 2007-2016  CEA/DEN, EDF R&D, OPEN CASCADE
+
+  Copyright (C) 2003-2007  OPEN CASCADE, EADS/CCR, LIP6, CEA/DEN,
+  CEDRAT, EDF R&D, LEG, PRINCIPIA R&D, BUREAU VERITAS
+
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2.1 of the License, or (at your option) any later version.
+
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the Free Software
+  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+
+  See http://www.salome-platform.org/ or email : webmaster.salome@opencascade.com
+
+-->
+
+<!--  GUI customization for MESH component  -->
+
+<meshers>
+
+<meshers-group name      ="NETGEN"
+               resources ="NETGENPlugin"
+               idl-module="NETGENPlugin"
+               server-lib="NETGENEngine"
+               gui-lib   ="NETGENPluginGUI">
+  <hypotheses>
+    <hypothesis type    ="NETGEN_Parameters"
+		label-id="NETGEN 3D Parameters"
+		icon-id ="mesh_hypo_netgen.png"
+		dim     ="3">
+      <python-wrap>
+        <accumulative-methods>
+          SetLocalSizeOnShape,
+          UnsetLocalSizeOnEntry
+        </accumulative-methods>
+      </python-wrap>
+    </hypothesis>
+    <hypothesis type    ="NETGEN_Parameters_2D"
+		label-id="NETGEN 2D Parameters"
+		icon-id ="mesh_hypo_netgen_2d.png"
+		dim     ="2">
+      <python-wrap>
+        <accumulative-methods>
+          SetLocalSizeOnShape,
+          UnsetLocalSizeOnEntry
+        </accumulative-methods>
+      </python-wrap>
+    </hypothesis>
+    <hypothesis type    ="NETGEN_Parameters_3D"
+		label-id="NETGEN 3D Parameters"
+		icon-id ="mesh_hypo_netgen.png"
+		dim     ="3">
+      <python-wrap>
+        <accumulative-methods>
+          SetLocalSizeOnShape,
+          UnsetLocalSizeOnEntry
+        </accumulative-methods>
+      </python-wrap>
+    </hypothesis>
+    <hypothesis type    ="NETGEN_Parameters_2D_ONLY"
+		label-id="NETGEN 2D Parameters"
+		icon-id ="mesh_hypo_netgen_2d.png"
+		dim     ="2">
+      <python-wrap>
+        <accumulative-methods>
+          SetLocalSizeOnShape,
+          UnsetLocalSizeOnEntry
+        </accumulative-methods>
+      </python-wrap>
+    </hypothesis>
+    <hypothesis type    ="NETGEN_SimpleParameters_2D"
+		label-id="NETGEN 2D Simple Parameters"
+		icon-id ="mesh_hypo_netgen_2d.png"
+		dim     ="2"/>
+    <hypothesis type    ="NETGEN_SimpleParameters_3D"
+		label-id="NETGEN 3D Simple Parameters"
+		icon-id ="mesh_hypo_netgen.png"
+		dim     ="3"/>
+  </hypotheses>
+
+  <algorithms>
+    <algorithm type     ="NETGEN_3D"
+               label-id ="NETGEN 3D"
+               icon-id  ="mesh_algo_tetra.png"
+               group-id ="1"
+               priority ="20"
+               hypos    ="MaxElementVolume,NETGEN_Parameters_3D"
+               opt-hypos="ViscousLayers"
+	       need-geom="false"
+               input    ="TRIA,QUAD"
+               output   ="TETRA,PYRAMID"
+               dim      ="3">
+      <python-wrap>
+        <algo>NETGEN_3D=Tetrahedron()</algo>
+        <hypo>MaxElementVolume=MaxElementVolume(SetMaxElementVolume())</hypo>
+        <hypo>NETGEN_Parameters_3D=Parameters()</hypo>
+        <hypo>ViscousLayers=ViscousLayers(SetTotalThickness(),SetNumberLayers(),SetStretchFactor(),SetFaces(1),SetFaces(2),SetMethod())</hypo>
+      </python-wrap>
+    </algorithm>
+
+    <algorithm type     ="NETGEN_2D_ONLY"
+               label-id ="NETGEN 2D"
+               icon-id  ="mesh_algo_netgen_2d.png"
+               group-id ="1"
+               priority ="20"
+               hypos    ="LengthFromEdges,MaxElementArea,NETGEN_Parameters_2D_ONLY"
+               opt-hypos="QuadranglePreference,ViscousLayers2D"
+               input    ="EDGE"
+               output   ="TRIA,QUAD"
+               dim      ="2">
+       <python-wrap>
+        <algo>NETGEN_2D_ONLY=Triangle(algo=smeshBuilder.NETGEN_2D)</algo>
+        <hypo>LengthFromEdges=LengthFromEdges()</hypo>
+        <hypo>MaxElementArea=MaxElementArea(SetMaxElementArea())</hypo>
+        <hypo>NETGEN_Parameters_2D_ONLY=Parameters()</hypo>
+        <hypo>QuadranglePreference=SetQuadAllowed()</hypo>
+        <hypo>ViscousLayers2D=ViscousLayers2D(SetTotalThickness(),SetNumberLayers(),SetStretchFactor(),SetIgnoreEdges())</hypo>
+      </python-wrap>
+    </algorithm>
+
+    <algorithm type             ="NETGEN_2D"
+               label-id         ="NETGEN 1D-2D"
+               icon-id          ="mesh_algo_netgen_2d.png"
+               group-id         ="1"
+               priority         ="10"
+               hypos            ="NETGEN_Parameters_2D, NETGEN_SimpleParameters_2D"
+               opt-hypos        ="ViscousLayers2D"
+               output           ="TRIA,QUAD"
+               dim              ="2"
+               support-submeshes="true">
+      <python-wrap>
+        <algo>NETGEN_2D=Triangle(algo=smeshBuilder.NETGEN_1D2D)</algo>
+        <hypo>NETGEN_Parameters_2D=Parameters()</hypo>
+        <hypo>NETGEN_SimpleParameters_2D=Parameters(smeshBuilder.SIMPLE)</hypo>
+        <hypo>ViscousLayers2D=ViscousLayers2D(SetTotalThickness(),SetNumberLayers(),SetStretchFactor(),SetIgnoreEdges())</hypo>
+      </python-wrap>
+    </algorithm>
+
+    <algorithm type             ="NETGEN_2D3D"
+               label-id         ="NETGEN 1D-2D-3D"
+               icon-id          ="mesh_algo_netgen_2d3d.png"
+               group-id         ="1"
+               priority         ="10"
+               hypos            ="NETGEN_Parameters, NETGEN_SimpleParameters_3D"
+               output           ="TETRA,PYRAMID"
+               dim              ="3"
+               support-submeshes="true">
+      <python-wrap>
+        <algo>NETGEN_2D3D=Tetrahedron(algo=smeshBuilder.NETGEN_1D2D3D)</algo>
+        <hypo>NETGEN_Parameters=Parameters()</hypo>
+        <hypo>NETGEN_SimpleParameters_3D=Parameters(smeshBuilder.SIMPLE)</hypo>
+      </python-wrap>
+    </algorithm>
+
+  </algorithms>
+</meshers-group>
+
+<hypotheses-set-group>
+
+    <hypotheses-set name ="Automatic Tetrahedralization"
+                    hypos="NETGEN_Parameters"
+                    algos="NETGEN_2D3D"/>
+
+    <hypotheses-set name ="Automatic Triangulation"
+                    hypos="NETGEN_Parameters_2D"
+                    algos="NETGEN_2D"/>
+
+</hypotheses-set-group>
+
+</meshers>

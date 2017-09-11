@@ -1,0 +1,889 @@
+<?xml version='1.0' encoding='us-ascii' ?>
+ 
+<!-- XML component catalog -->
+<begin-catalog>
+
+<!-- Path prefix information -->
+
+<path-prefix-list>
+</path-prefix-list>
+
+<!-- Component list -->
+<component-list>
+  <component>
+        <!-- Component identification -->
+        <component-name>DSCCODA</component-name>
+        <component-username>DSCCODA</component-username>
+        <component-type>Data</component-type>
+        <component-author>C. Caremoli</component-author>
+        <component-version>3.2.0</component-version>
+        <component-comment>EDF - RD</component-comment>
+        <component-multistudy>1</component-multistudy>
+        <component-icone>DSCCODA.png</component-icone>
+        <constraint>'linux' ~ OS</constraint>
+	
+        <component-interface-list>
+            <component-interface-name>DSCCODA</component-interface-name>
+            <component-interface-comment>No comment</component-interface-comment>
+
+            <component-service-list>
+                <component-service>
+                    <!-- service-identification -->
+                    <service-name>prun</service-name>
+                    <service-author>CCar</service-author>
+                    <service-version>1.0</service-version>
+                    <service-comment>prun</service-comment>
+                    <service-by-default>1</service-by-default>
+                    <!-- service-connexion -->
+                    <inParameter-list>
+                          <inParameter>
+                            <inParameter-name>niter</inParameter-name>
+                            <inParameter-type>long</inParameter-type>
+                            <inParameter-comment></inParameter-comment>
+                          </inParameter>
+                    </inParameter-list>
+                    <outParameter-list>
+                    </outParameter-list>
+                        <DataStream-list>
+                            <outParameter>
+                                <outParameter-name>prun_out_port</outParameter-name>
+                                <outParameter-type>BASIC_short</outParameter-type>
+                                <outParameter-comment>unknown</outParameter-comment>
+                            </outParameter>
+                            <inParameter>
+                                <inParameter-name>prun_in_port</inParameter-name>
+                                <inParameter-type>BASIC_short</inParameter-type>
+                                <inParameter-comment>unknown</inParameter-comment>
+                            </inParameter>
+                        </DataStream-list>
+                </component-service>
+                <component-service>
+                    <!-- service-identification -->
+                    <service-name>trun</service-name>
+                    <service-author>CCar</service-author>
+                    <service-version>1.0</service-version>
+                    <service-comment>trun</service-comment>
+                    <service-by-default>1</service-by-default>
+                    <!-- service-connexion -->
+                    <inParameter-list>
+                          <inParameter>
+                            <inParameter-name>niter</inParameter-name>
+                            <inParameter-type>long</inParameter-type>
+                            <inParameter-comment></inParameter-comment>
+                          </inParameter>
+                    </inParameter-list>
+                    <outParameter-list>
+                    </outParameter-list>
+                        <DataStream-list>
+                            <outParameter>
+                                <outParameter-name>trun_out_port</outParameter-name>
+                                <outParameter-type>BASIC_short</outParameter-type>
+                                <outParameter-comment>unknown</outParameter-comment>
+                            </outParameter>
+                            <inParameter>
+                                <inParameter-name>trun_in_port</inParameter-name>
+                                <inParameter-type>BASIC_short</inParameter-type>
+                                <inParameter-comment>unknown</inParameter-comment>
+                            </inParameter>
+                        </DataStream-list>
+                </component-service>
+            </component-service-list>
+        </component-interface-list>
+	</component>
+  <component>
+        <!-- Component identification -->
+        <component-name>DSCCODB</component-name>
+        <component-username>DSCCODB</component-username>
+        <component-type>Data</component-type>
+        <component-author>C. Caremoli</component-author>
+        <component-version>3.2.0</component-version>
+        <component-comment>EDF - RD</component-comment>
+        <component-multistudy>1</component-multistudy>
+        <component-icone>DSCCODB.png</component-icone>
+        <constraint>'linux' ~ OS</constraint>
+        <component-interface-list>
+            <component-interface-name>DSCCODB</component-interface-name>
+            <component-interface-comment>No comment</component-interface-comment>
+            <component-service-list>
+                <component-service>
+                    <!-- service-identification -->
+                    <service-name>prun</service-name>
+                    <service-author>CCar</service-author>
+                    <service-version>1.0</service-version>
+                    <service-comment>prun</service-comment>
+                    <service-by-default>1</service-by-default>
+                    <!-- service-connexion -->
+                    <inParameter-list>
+                          <inParameter>
+                            <inParameter-name>niter</inParameter-name>
+                            <inParameter-type>long</inParameter-type>
+                            <inParameter-comment></inParameter-comment>
+                          </inParameter>
+                    </inParameter-list>
+                    <outParameter-list>
+                    </outParameter-list>
+                        <DataStream-list>
+                            <outParameter>
+                                <outParameter-name>prun_out_port</outParameter-name>
+                                <outParameter-type>BASIC_short</outParameter-type>
+                                <outParameter-comment>unknown</outParameter-comment>
+                            </outParameter>
+                            <inParameter>
+                                <inParameter-name>prun_in_port</inParameter-name>
+                                <inParameter-type>BASIC_short</inParameter-type>
+                                <inParameter-comment>unknown</inParameter-comment>
+                            </inParameter>
+                        </DataStream-list>
+                </component-service>
+                <component-service>
+                    <!-- service-identification -->
+                    <service-name>trun</service-name>
+                    <service-author>CCar</service-author>
+                    <service-version>1.0</service-version>
+                    <service-comment>trun</service-comment>
+                    <service-by-default>1</service-by-default>
+                    <!-- service-connexion -->
+                    <inParameter-list>
+                          <inParameter>
+                            <inParameter-name>niter</inParameter-name>
+                            <inParameter-type>long</inParameter-type>
+                            <inParameter-comment></inParameter-comment>
+                          </inParameter>
+                    </inParameter-list>
+                    <outParameter-list>
+                    </outParameter-list>
+                        <DataStream-list>
+                            <outParameter>
+                                <outParameter-name>trun_out_port</outParameter-name>
+                                <outParameter-type>BASIC_short</outParameter-type>
+                                <outParameter-comment>unknown</outParameter-comment>
+                            </outParameter>
+                            <inParameter>
+                                <inParameter-name>trun_in_port</inParameter-name>
+                                <inParameter-type>BASIC_short</inParameter-type>
+                                <inParameter-comment>unknown</inParameter-comment>
+                            </inParameter>
+                        </DataStream-list>
+                </component-service>
+            </component-service-list>
+        </component-interface-list>
+  </component>
+  <component>
+        <!-- Component identification -->
+        <component-name>DSCCODC</component-name>
+        <component-username>DSCCODC</component-username>
+        <component-type>Data</component-type>
+        <component-author>C. Caremoli</component-author>
+        <component-version>3.2.0</component-version>
+        <component-comment>EDF - RD</component-comment>
+        <component-multistudy>1</component-multistudy>
+        <component-icone>DSCCODC.png</component-icone>
+        <constraint>'linux' ~ OS</constraint>
+        <component-interface-list>
+            <component-interface-name>DSCCODC</component-interface-name>
+            <component-interface-comment>No comment</component-interface-comment>
+            <component-service-list>
+                <component-service>
+                    <!-- service-identification -->
+                    <service-name>prun</service-name>
+                    <service-author>CCar</service-author>
+                    <service-version>1.0</service-version>
+                    <service-comment>prun</service-comment>
+                    <service-by-default>1</service-by-default>
+                    <!-- service-connexion -->
+                    <inParameter-list>
+                          <inParameter>
+                            <inParameter-name>niter</inParameter-name>
+                            <inParameter-type>long</inParameter-type>
+                            <inParameter-comment></inParameter-comment>
+                          </inParameter>
+                    </inParameter-list>
+                    <outParameter-list>
+                    </outParameter-list>
+                        <DataStream-list>
+                            <outParameter>
+                                <outParameter-name>STP_EN</outParameter-name>
+                                <outParameter-type>INTEGER</outParameter-type>
+                                <outParameter-comment>unknown</outParameter-comment>
+                                <outParameter-dependency>I</outParameter-dependency>
+                            </outParameter>
+                            <inParameter>
+                                <inParameter-name>ETP_EN</inParameter-name>
+                                <inParameter-type>INTEGER</inParameter-type>
+                                <inParameter-comment>unknown</inParameter-comment>
+                                <inParameter-dependency>I</inParameter-dependency>
+                            </inParameter>
+                        </DataStream-list>
+                </component-service>
+                <component-service>
+                    <!-- service-identification -->
+                    <service-name>trun</service-name>
+                    <service-author>CCar</service-author>
+                    <service-version>1.0</service-version>
+                    <service-comment>trun</service-comment>
+                    <service-by-default>1</service-by-default>
+                    <!-- service-connexion -->
+                    <inParameter-list>
+                          <inParameter>
+                            <inParameter-name>niter</inParameter-name>
+                            <inParameter-type>long</inParameter-type>
+                            <inParameter-comment></inParameter-comment>
+                          </inParameter>
+                    </inParameter-list>
+                    <outParameter-list>
+                    </outParameter-list>
+                        <DataStream-list>
+                            <outParameter>
+                                <outParameter-name>STP_RE</outParameter-name>
+                                <outParameter-type>FLOAT</outParameter-type>
+                                <outParameter-comment>unknown</outParameter-comment>
+                                <outParameter-dependency>T</outParameter-dependency>
+                            </outParameter>
+                            <inParameter>
+                                <inParameter-name>ETP_RE</inParameter-name>
+                                <inParameter-type>FLOAT</inParameter-type>
+                                <inParameter-comment>unknown</inParameter-comment>
+                                <inParameter-dependency>T</inParameter-dependency>
+                            </inParameter>
+                        </DataStream-list>
+                </component-service>
+            </component-service-list>
+        </component-interface-list>
+  </component>
+  <component>
+        <!-- Component identification -->
+        <component-name>DSCCODD</component-name>
+        <component-username>DSCCODD</component-username>
+        <component-type>Data</component-type>
+        <component-author>C. Caremoli</component-author>
+        <component-version>3.2.0</component-version>
+        <component-comment>EDF - RD</component-comment>
+        <component-multistudy>1</component-multistudy>
+        <component-icone>DSCCODD.png</component-icone>
+        <constraint>'linux' ~ OS</constraint>
+        <component-interface-list>
+            <component-interface-name>DSCCODD</component-interface-name>
+            <component-interface-comment>No comment</component-interface-comment>
+            <component-service-list>
+                <component-service>
+                    <!-- service-identification -->
+                    <service-name>prun</service-name>
+                    <service-author>CCar</service-author>
+                    <service-version>1.0</service-version>
+                    <service-comment>prun</service-comment>
+                    <service-by-default>1</service-by-default>
+                    <!-- service-connexion -->
+                    <inParameter-list>
+                          <inParameter>
+                            <inParameter-name>niter</inParameter-name>
+                            <inParameter-type>long</inParameter-type>
+                            <inParameter-comment></inParameter-comment>
+                          </inParameter>
+                    </inParameter-list>
+                    <outParameter-list>
+                    </outParameter-list>
+                        <DataStream-list>
+                            <outParameter>
+                                <outParameter-name>STP_EN</outParameter-name>
+                                <outParameter-type>INTEGER</outParameter-type>
+                                <outParameter-comment>unknown</outParameter-comment>
+                                <outParameter-dependency>I</outParameter-dependency>
+                            </outParameter>
+                            <inParameter>
+                                <inParameter-name>ETP_EN</inParameter-name>
+                                <inParameter-type>INTEGER</inParameter-type>
+                                <inParameter-comment>unknown</inParameter-comment>
+                                <inParameter-dependency>I</inParameter-dependency>
+                            </inParameter>
+                        </DataStream-list>
+                </component-service>
+                <component-service>
+                    <!-- service-identification -->
+                    <service-name>trun</service-name>
+                    <service-author>CCar</service-author>
+                    <service-version>1.0</service-version>
+                    <service-comment>trun</service-comment>
+                    <service-by-default>1</service-by-default>
+                    <!-- service-connexion -->
+                    <inParameter-list>
+                          <inParameter>
+                            <inParameter-name>niter</inParameter-name>
+                            <inParameter-type>long</inParameter-type>
+                            <inParameter-comment></inParameter-comment>
+                          </inParameter>
+                    </inParameter-list>
+                    <outParameter-list>
+                    </outParameter-list>
+                        <DataStream-list>
+                            <outParameter>
+                                <outParameter-name>STP_RE</outParameter-name>
+                                <outParameter-type>FLOAT</outParameter-type>
+                                <outParameter-comment>unknown</outParameter-comment>
+                                <outParameter-dependency>T</outParameter-dependency>
+                            </outParameter>
+                            <inParameter>
+                                <inParameter-name>ETP_RE</inParameter-name>
+                                <inParameter-type>FLOAT</inParameter-type>
+                                <inParameter-comment>unknown</inParameter-comment>
+                                <inParameter-dependency>T</inParameter-dependency>
+                            </inParameter>
+                        </DataStream-list>
+                </component-service>
+            </component-service-list>
+        </component-interface-list>
+  </component>
+  <component>
+        <!-- Component identification -->
+        <component-name>SOLIDE</component-name>
+        <component-username>SOLIDE</component-username>
+        <component-type>Data</component-type>
+        <component-author>C. Caremoli</component-author>
+        <component-version>3.2.0</component-version>
+        <component-comment>EDF - RD</component-comment>
+        <component-multistudy>1</component-multistudy>
+        <component-icone>SOLIDE.png</component-icone>
+        <constraint>'linux' ~ OS</constraint>
+        <component-interface-list>
+            <component-interface-name>SOLIDE</component-interface-name>
+            <component-interface-comment>No comment</component-interface-comment>
+            <component-service-list>
+                <component-service>
+                    <!-- service-identification -->
+                    <service-name>prun</service-name>
+                    <service-author>CCar</service-author>
+                    <service-version>1.0</service-version>
+                    <service-comment>prun</service-comment>
+                    <service-by-default>1</service-by-default>
+                    <!-- service-connexion -->
+                    <inParameter-list>
+                    </inParameter-list>
+                    <outParameter-list>
+                    </outParameter-list>
+                    <DataStream-list>
+                      <inParameter>
+                        <inParameter-name>puissi</inParameter-name>
+                        <inParameter-type>CALCIUM_real</inParameter-type>
+                        <inParameter-dependency>I</inParameter-dependency>
+                      </inParameter>
+                      <inParameter>
+                        <inParameter-name>tfi</inParameter-name>
+                        <inParameter-type>CALCIUM_real</inParameter-type>
+                        <inParameter-dependency>I</inParameter-dependency>
+                      </inParameter>
+                      <outParameter>
+                        <outParameter-name>tpi</outParameter-name>
+                        <outParameter-type>CALCIUM_real</outParameter-type>
+                        <outParameter-dependency>I</outParameter-dependency>
+                      </outParameter>
+                      <outParameter>
+                        <outParameter-name>tempi</outParameter-name>
+                        <outParameter-type>CALCIUM_real</outParameter-type>
+                        <outParameter-dependency>I</outParameter-dependency>
+                      </outParameter>
+                      <outParameter>
+                        <outParameter-name>iconv</outParameter-name>
+                        <outParameter-type>CALCIUM_integer</outParameter-type>
+                        <outParameter-dependency>I</outParameter-dependency>
+                      </outParameter>
+                    </DataStream-list>
+                </component-service>
+                <component-service>
+                    <!-- service-identification -->
+                    <service-name>trun</service-name>
+                    <service-author>CCar</service-author>
+                    <service-version>1.0</service-version>
+                    <service-comment>trun</service-comment>
+                    <service-by-default>1</service-by-default>
+                    <!-- service-connexion -->
+                    <inParameter-list>
+                          <inParameter>
+                            <inParameter-name>dt</inParameter-name>
+                            <inParameter-type>double</inParameter-type>
+                            <inParameter-comment></inParameter-comment>
+                          </inParameter>
+                    </inParameter-list>
+                    <outParameter-list>
+                    </outParameter-list>
+                    <DataStream-list>
+                      <inParameter>
+                        <inParameter-name>puissa</inParameter-name>
+                        <inParameter-type>CALCIUM_real</inParameter-type>
+                        <inParameter-dependency>T</inParameter-dependency>
+                      </inParameter>
+                      <inParameter>
+                        <inParameter-name>text</inParameter-name>
+                        <inParameter-type>CALCIUM_real</inParameter-type>
+                        <inParameter-dependency>T</inParameter-dependency>
+                      </inParameter>
+                      <inParameter>
+                        <inParameter-name>rext</inParameter-name>
+                        <inParameter-type>CALCIUM_real</inParameter-type>
+                        <inParameter-dependency>T</inParameter-dependency>
+                      </inParameter>
+                      <inParameter>
+                        <inParameter-name>topo</inParameter-name>
+                        <inParameter-type>CALCIUM_integer</inParameter-type>
+                        <inParameter-dependency>T</inParameter-dependency>
+                      </inParameter>
+                      <outParameter>
+                        <outParameter-name>tparoi</outParameter-name>
+                        <outParameter-type>CALCIUM_real</outParameter-type>
+                        <outParameter-dependency>T</outParameter-dependency>
+                      </outParameter>
+                      <outParameter>
+                        <outParameter-name>rparoi</outParameter-name>
+                        <outParameter-type>CALCIUM_real</outParameter-type>
+                        <outParameter-dependency>T</outParameter-dependency>
+                      </outParameter>
+                      <outParameter>
+                        <outParameter-name>tempi</outParameter-name>
+                        <outParameter-type>CALCIUM_real</outParameter-type>
+                        <outParameter-dependency>T</outParameter-dependency>
+                      </outParameter>
+                      <outParameter>
+                        <outParameter-name>temperature</outParameter-name>
+                        <outParameter-type>CALCIUM_real</outParameter-type>
+                        <outParameter-dependency>T</outParameter-dependency>
+                      </outParameter>
+                    </DataStream-list>
+                </component-service>
+            </component-service-list>
+        </component-interface-list>
+  </component>
+  <component>
+        <!-- Component identification -->
+        <component-name>FLUIDE</component-name>
+        <component-username>FLUIDE</component-username>
+        <component-type>Data</component-type>
+        <component-author>C. Caremoli</component-author>
+        <component-version>3.2.0</component-version>
+        <component-comment>EDF - RD</component-comment>
+        <component-multistudy>1</component-multistudy>
+        <component-icone>FLUIDE.png</component-icone>
+        <constraint>'linux' ~ OS</constraint>
+        <component-interface-list>
+            <component-interface-name>FLUIDE</component-interface-name>
+            <component-interface-comment>No comment</component-interface-comment>
+            <component-service-list>
+                <component-service>
+                    <!-- service-identification -->
+                    <service-name>prun</service-name>
+                    <service-author>CCar</service-author>
+                    <service-version>1.0</service-version>
+                    <service-comment>prun</service-comment>
+                    <service-by-default>1</service-by-default>
+                    <!-- service-connexion -->
+                    <inParameter-list>
+                    </inParameter-list>
+                    <outParameter-list>
+                    </outParameter-list>
+                    <DataStream-list>
+                      <inParameter>
+                        <inParameter-name>tpi</inParameter-name>
+                        <inParameter-type>CALCIUM_real</inParameter-type>
+                        <inParameter-dependency>I</inParameter-dependency>
+                      </inParameter>
+                      <inParameter>
+                        <inParameter-name>iconv</inParameter-name>
+                        <inParameter-type>CALCIUM_integer</inParameter-type>
+                        <inParameter-dependency>I</inParameter-dependency>
+                      </inParameter>
+                      <outParameter>
+                        <outParameter-name>tfi</outParameter-name>
+                        <outParameter-type>CALCIUM_real</outParameter-type>
+                        <outParameter-dependency>I</outParameter-dependency>
+                      </outParameter>
+                    </DataStream-list>
+                </component-service>
+                <component-service>
+                    <!-- service-identification -->
+                    <service-name>trun</service-name>
+                    <service-author>CCar</service-author>
+                    <service-version>1.0</service-version>
+                    <service-comment>trun</service-comment>
+                    <service-by-default>1</service-by-default>
+                    <!-- service-connexion -->
+                    <inParameter-list>
+                          <inParameter>
+                            <inParameter-name>dt</inParameter-name>
+                            <inParameter-type>double</inParameter-type>
+                            <inParameter-comment></inParameter-comment>
+                          </inParameter>
+                    </inParameter-list>
+                    <outParameter-list>
+                    </outParameter-list>
+                    <DataStream-list>
+                      <inParameter>
+                        <inParameter-name>tparoi</inParameter-name>
+                        <inParameter-type>CALCIUM_real</inParameter-type>
+                        <inParameter-dependency>T</inParameter-dependency>
+                      </inParameter>
+                      <inParameter>
+                        <inParameter-name>rparoi</inParameter-name>
+                        <inParameter-type>CALCIUM_real</inParameter-type>
+                        <inParameter-dependency>T</inParameter-dependency>
+                      </inParameter>
+                      <outParameter>
+                        <outParameter-name>tfluide</outParameter-name>
+                        <outParameter-type>CALCIUM_real</outParameter-type>
+                        <outParameter-dependency>T</outParameter-dependency>
+                      </outParameter>
+                      <outParameter>
+                        <outParameter-name>rfluide</outParameter-name>
+                        <outParameter-type>CALCIUM_real</outParameter-type>
+                        <outParameter-dependency>T</outParameter-dependency>
+                      </outParameter>
+                    </DataStream-list>
+                </component-service>
+            </component-service-list>
+        </component-interface-list>
+  </component>
+  <component>
+        <!-- Component identification -->
+        <component-name>NEUTRO</component-name>
+        <component-username>NEUTRO</component-username>
+        <component-type>Data</component-type>
+        <component-author>C. Caremoli</component-author>
+        <component-version>3.2.0</component-version>
+        <component-comment>EDF - RD</component-comment>
+        <component-multistudy>1</component-multistudy>
+        <component-icone>NEUTRO.png</component-icone>
+        <constraint>'linux' ~ OS</constraint>
+        <component-interface-list>
+            <component-interface-name>NEUTRO</component-interface-name>
+            <component-interface-comment>No comment</component-interface-comment>
+            <component-service-list>
+                <component-service>
+                    <!-- service-identification -->
+                    <service-name>prun</service-name>
+                    <service-author>CCar</service-author>
+                    <service-version>1.0</service-version>
+                    <service-comment>prun</service-comment>
+                    <service-by-default>1</service-by-default>
+                    <!-- service-connexion -->
+                    <inParameter-list>
+                    </inParameter-list>
+                    <outParameter-list>
+                    </outParameter-list>
+                    <DataStream-list>
+                      <inParameter>
+                        <inParameter-name>tempi</inParameter-name>
+                        <inParameter-type>CALCIUM_real</inParameter-type>
+                        <inParameter-dependency>I</inParameter-dependency>
+                      </inParameter>
+                      <inParameter>
+                        <inParameter-name>iconv</inParameter-name>
+                        <inParameter-type>CALCIUM_integer</inParameter-type>
+                        <inParameter-dependency>I</inParameter-dependency>
+                      </inParameter>
+                      <outParameter>
+                        <outParameter-name>puissi</outParameter-name>
+                        <outParameter-type>CALCIUM_real</outParameter-type>
+                        <outParameter-dependency>I</outParameter-dependency>
+                      </outParameter>
+                    </DataStream-list>
+                </component-service>
+                <component-service>
+                    <!-- service-identification -->
+                    <service-name>trun</service-name>
+                    <service-author>CCar</service-author>
+                    <service-version>1.0</service-version>
+                    <service-comment>trun</service-comment>
+                    <service-by-default>1</service-by-default>
+                    <!-- service-connexion -->
+                    <inParameter-list>
+                          <inParameter>
+                            <inParameter-name>dt</inParameter-name>
+                            <inParameter-type>double</inParameter-type>
+                            <inParameter-comment></inParameter-comment>
+                          </inParameter>
+                    </inParameter-list>
+                    <outParameter-list>
+                    </outParameter-list>
+                    <DataStream-list>
+                      <inParameter>
+                        <inParameter-name>temperature</inParameter-name>
+                        <inParameter-type>CALCIUM_real</inParameter-type>
+                        <inParameter-dependency>T</inParameter-dependency>
+                      </inParameter>
+                      <outParameter>
+                        <outParameter-name>puissance</outParameter-name>
+                        <outParameter-type>CALCIUM_real</outParameter-type>
+                        <outParameter-dependency>T</outParameter-dependency>
+                      </outParameter>
+                      <outParameter>
+                        <outParameter-name>topo</outParameter-name>
+                        <outParameter-type>CALCIUM_integer</outParameter-type>
+                        <outParameter-dependency>T</outParameter-dependency>
+                      </outParameter>
+                    </DataStream-list>
+                </component-service>
+            </component-service-list>
+        </component-interface-list>
+  </component>
+
+  <component>
+        <!-- Component identification -->
+        <component-name>INTERPI</component-name>
+        <component-username>INTERPI</component-username>
+        <component-type>Data</component-type>
+        <component-author>C. Caremoli</component-author>
+        <component-version>3.2.0</component-version>
+        <component-comment>EDF - RD</component-comment>
+        <component-multistudy>1</component-multistudy>
+        <component-icone>INTERPI.png</component-icone>
+        <constraint>'linux' ~ OS</constraint>
+        <component-interface-list>
+            <component-interface-name>INTERPI</component-interface-name>
+            <component-interface-comment>No comment</component-interface-comment>
+            <component-service-list>
+                <component-service>
+                    <!-- service-identification -->
+                    <service-name>prun</service-name>
+                    <service-author>CCar</service-author>
+                    <service-version>1.0</service-version>
+                    <service-comment>prun</service-comment>
+                    <service-by-default>1</service-by-default>
+                    <!-- service-connexion -->
+                    <inParameter-list>
+                    </inParameter-list>
+                    <outParameter-list>
+                    </outParameter-list>
+                    <DataStream-list>
+                      <inParameter>
+                        <inParameter-name>tparoi</inParameter-name>
+                        <inParameter-type>CALCIUM_real</inParameter-type>
+                        <inParameter-dependency>I</inParameter-dependency>
+                      </inParameter>
+                      <outParameter>
+                        <outParameter-name>tpar</outParameter-name>
+                        <outParameter-type>CALCIUM_real</outParameter-type>
+                        <outParameter-dependency>I</outParameter-dependency>
+                      </outParameter>
+                    </DataStream-list>
+                </component-service>
+                <component-service>
+                    <!-- service-identification -->
+                    <service-name>trun</service-name>
+                    <service-author>CCar</service-author>
+                    <service-version>1.0</service-version>
+                    <service-comment>trun</service-comment>
+                    <service-by-default>0</service-by-default>
+                    <!-- service-connexion -->
+                    <inParameter-list>
+                    </inParameter-list>
+                    <outParameter-list>
+                    </outParameter-list>
+                    <DataStream-list>
+                      <inParameter>
+                        <inParameter-name>tparoit</inParameter-name>
+                        <inParameter-type>CALCIUM_real</inParameter-type>
+                        <inParameter-dependency>T</inParameter-dependency>
+                      </inParameter>
+                      <outParameter>
+                        <outParameter-name>tpart</outParameter-name>
+                        <outParameter-type>CALCIUM_real</outParameter-type>
+                        <outParameter-dependency>T</outParameter-dependency>
+                      </outParameter>
+                    </DataStream-list>
+                </component-service>
+            </component-service-list>
+        </component-interface-list>
+  </component>
+
+  <component>
+        <!-- Component identification -->
+        <component-name>INTERPJ</component-name>
+        <component-username>INTERPJ</component-username>
+        <component-type>Data</component-type>
+        <component-author>C. Caremoli</component-author>
+        <component-version>3.2.0</component-version>
+        <component-comment>EDF - RD</component-comment>
+        <component-multistudy>1</component-multistudy>
+        <component-icone>INTERPI.png</component-icone>
+        <constraint>'linux' ~ OS</constraint>
+        <component-interface-list>
+            <component-interface-name>INTERPJ</component-interface-name>
+            <component-interface-comment>No comment</component-interface-comment>
+            <component-service-list>
+                <component-service>
+                    <!-- service-identification -->
+                    <service-name>trun</service-name>
+                    <service-author>CCar</service-author>
+                    <service-version>1.0</service-version>
+                    <service-comment>trun</service-comment>
+                    <service-by-default>1</service-by-default>
+                    <!-- service-connexion -->
+                    <inParameter-list>
+                    </inParameter-list>
+                    <outParameter-list>
+                    </outParameter-list>
+                    <DataStream-list>
+                      <inParameter>
+                        <inParameter-name>tparoit</inParameter-name>
+                        <inParameter-type>CALCIUM_real</inParameter-type>
+                        <inParameter-dependency>T</inParameter-dependency>
+                      </inParameter>
+                      <outParameter>
+                        <outParameter-name>tpart</outParameter-name>
+                        <outParameter-type>CALCIUM_real</outParameter-type>
+                        <outParameter-dependency>T</outParameter-dependency>
+                      </outParameter>
+                    </DataStream-list>
+                </component-service>
+            </component-service-list>
+        </component-interface-list>
+  </component>
+
+  <component>
+        <!-- Component identification -->
+        <component-name>INTERPK</component-name>
+        <component-username>INTERPK</component-username>
+        <component-type>Data</component-type>
+        <component-author>C. Caremoli</component-author>
+        <component-version>3.2.0</component-version>
+        <component-comment>EDF - RD</component-comment>
+        <component-multistudy>1</component-multistudy>
+        <component-icone>INTERPI.png</component-icone>
+        <constraint>'linux' ~ OS</constraint>
+        <component-interface-list>
+            <component-interface-name>INTERPK</component-interface-name>
+            <component-interface-comment>No comment</component-interface-comment>
+            <component-service-list>
+                <component-service>
+                    <!-- service-identification -->
+                    <service-name>trun</service-name>
+                    <service-author>CCar</service-author>
+                    <service-version>1.0</service-version>
+                    <service-comment>trun</service-comment>
+                    <service-by-default>1</service-by-default>
+                    <!-- service-connexion -->
+                    <inParameter-list>
+                    </inParameter-list>
+                    <outParameter-list>
+                    </outParameter-list>
+                    <DataStream-list>
+                      <inParameter>
+                        <inParameter-name>tparoit</inParameter-name>
+                        <inParameter-type>CALCIUM_real</inParameter-type>
+                        <inParameter-dependency>T</inParameter-dependency>
+                      </inParameter>
+                      <inParameter>
+                        <inParameter-name>topo</inParameter-name>
+                        <inParameter-type>CALCIUM_integer</inParameter-type>
+                        <inParameter-dependency>T</inParameter-dependency>
+                      </inParameter>
+                      <outParameter>
+                        <outParameter-name>tpart</outParameter-name>
+                        <outParameter-type>CALCIUM_real</outParameter-type>
+                        <outParameter-dependency>T</outParameter-dependency>
+                      </outParameter>
+                      <outParameter>
+                        <outParameter-name>stopo</outParameter-name>
+                        <outParameter-type>CALCIUM_integer</outParameter-type>
+                        <outParameter-dependency>T</outParameter-dependency>
+                      </outParameter>
+                    </DataStream-list>
+                </component-service>
+            </component-service-list>
+        </component-interface-list>
+  </component>
+
+  <component>
+        <!-- Component identification -->
+        <component-name>PYCOMPO</component-name>
+        <component-username>PYCOMPO</component-username>
+        <component-type>Data</component-type>
+        <component-author>C. Caremoli</component-author>
+        <component-version>3.2.0</component-version>
+        <component-comment>EDF - RD</component-comment>
+        <component-multistudy>1</component-multistudy>
+        <component-icone>INTERPI.png</component-icone>
+        <constraint>'linux' ~ OS</constraint>
+        <component-interface-list>
+            <component-interface-name>PYCOMPO</component-interface-name>
+            <component-interface-comment>No comment</component-interface-comment>
+            <component-service-list>
+                <component-service>
+                    <!-- service-identification -->
+                    <service-name>run</service-name>
+                    <service-author>CCar</service-author>
+                    <service-version>1.0</service-version>
+                    <service-comment>run</service-comment>
+                    <service-by-default>1</service-by-default>
+                    <!-- service-connexion -->
+                    <inParameter-list>
+                    </inParameter-list>
+                    <outParameter-list>
+                    </outParameter-list>
+                    <DataStream-list>
+                      <inParameter>
+                        <inParameter-name>tabin</inParameter-name>
+                        <inParameter-type>CALCIUM_real</inParameter-type>
+                        <inParameter-dependency>I</inParameter-dependency>
+                      </inParameter>
+                      <outParameter>
+                        <outParameter-name>tabout</outParameter-name>
+                        <outParameter-type>CALCIUM_real</outParameter-type>
+                        <outParameter-dependency>I</outParameter-dependency>
+                      </outParameter>
+                    </DataStream-list>
+                </component-service>
+                <component-service>
+                    <!-- service-identification -->
+                    <service-name>gnuplot</service-name>
+                    <service-author>CCar</service-author>
+                    <service-version>1.0</service-version>
+                    <service-comment>gnuplot</service-comment>
+                    <service-by-default>1</service-by-default>
+                    <!-- service-connexion -->
+                    <inParameter-list>
+                    </inParameter-list>
+                    <outParameter-list>
+                    </outParameter-list>
+                    <DataStream-list>
+                      <inParameter>
+                        <inParameter-name>tabin</inParameter-name>
+                        <inParameter-type>CALCIUM_real</inParameter-type>
+                        <inParameter-dependency>I</inParameter-dependency>
+                      </inParameter>
+                      <outParameter>
+                        <outParameter-name>tabout</outParameter-name>
+                        <outParameter-type>CALCIUM_real</outParameter-type>
+                        <outParameter-dependency>I</outParameter-dependency>
+                      </outParameter>
+                    </DataStream-list>
+                </component-service>
+
+                <component-service>
+                    <!-- service-identification -->
+                    <service-name>visu</service-name>
+                    <service-author>CCar</service-author>
+                    <service-version>1.0</service-version>
+                    <service-comment>visu</service-comment>
+                    <service-by-default>1</service-by-default>
+                    <!-- service-connexion -->
+                    <inParameter-list>
+                    </inParameter-list>
+                    <outParameter-list>
+                    </outParameter-list>
+                    <DataStream-list>
+                      <inParameter>
+                        <inParameter-name>tabin</inParameter-name>
+                        <inParameter-type>CALCIUM_real</inParameter-type>
+                        <inParameter-dependency>I</inParameter-dependency>
+                      </inParameter>
+                      <outParameter>
+                        <outParameter-name>tabout</outParameter-name>
+                        <outParameter-type>CALCIUM_real</outParameter-type>
+                        <outParameter-dependency>I</outParameter-dependency>
+                      </outParameter>
+                    </DataStream-list>
+                </component-service>
+
+            </component-service-list>
+        </component-interface-list>
+  </component>
+
+</component-list>
+</begin-catalog>

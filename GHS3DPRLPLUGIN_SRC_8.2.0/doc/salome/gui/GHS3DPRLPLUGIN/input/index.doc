@@ -1,0 +1,24 @@
+/*!
+
+\mainpage Introduction to MG-Tetra_HPC plug-in
+
+\b MG-Tetra_HPC plug-in adds MG-Tetra_HPC (former GHS3DPRL) meshing
+algorithm to the SALOME Mesh module.
+
+\b MG-Tetra_HPC plug-in is destined for:
+- Meshing 3D geometric entities: volumes are split into tetrahedral (pyramidal) elements.
+- Generating 3D meshes from 2D meshes, working without geometrical objects.
+
+\note MG-Tetra_HPC plug-in uses MG-Tetra-hpc (formerly Tepal) commercial mesher and require a
+license to be used within the Mesh module.
+
+To manage parameters of the MG-Tetra_HPC mesher use \subpage ghs3dprl_hypo_page.
+
+Also all MG-Tetra_HPC functionalities are accessible via
+\subpage ghs3dprlplugin_python_interface_page "MG-Tetra_HPC Python interface".
+
+
+\image html image2.gif "Example of a tetrahedral 3D mesh"
+
+
+*/

@@ -1,0 +1,265 @@
+/*!
+
+\page hybrid_hypo_page HYBRID Parameters hypothesis
+
+\anchor hybrid_top
+HYBRID Parameters hypothesis works only with <b>MeshGems-Hybrid</b> 
+algorithm. This algorithm is a commercial software.
+
+To get a licence, visit http://www.distene.com and http://www.meshgems.com/
+
+\tableofcontents
+
+\section hybrid_general_parameters General parameters
+
+\image html hybrid_hypothesis_arguments.png
+
+- <b>Hybrid parameters</b> - See distene documentation or MeshGems-Hybrid help command:
+
+\verbatim
+
+$> mg-hybrid.exe --help
+
+
+    ==============================================
+    MG-Hybrid -- MeshGems 2.1-11 (September, 2015)
+    ==============================================
+
+        Distene SAS
+           Campus Teratec
+           2, rue de la Piquetterie
+           91680 Bruyeres le Chatel
+           FRANCE
+        Phone: +33(0)970-650-219   Fax: +33(0)169-269-033
+        EMail: <support@distene.com>
+
+        Running MG-Hybrid (Copyright 2014-2015 by Distene SAS)
+           date of run: 26-Jan-2016 AT 12:24:16
+           running on : Linux 3.6.10-4.fc18.x86_64 x86_64
+           using modules: 
+                MeshGems-Core 2.1-11
+
+        MeshGems is a Registered Trademark of Distene SAS
+
+
+
+MG-HYBRID USAGE
+    mg-hybrid.exe [-h] [-v <verbose>] [-i <filein>] [-o <fileout>] \
+        [--global_physical_size <size>] \
+        [--max_number_of_threads <maxthreads>] \
+        [--boundary_layer_size_mode <mode>] \
+        [--number_of_boundary_layers <number>] \
+        [--boundary_layer_global_initial_height <height>] \
+        [--boundary_layer_surface_tags <list>] \
+        [--boundary_layer_initial_height_on_surface_tags <list>] \
+        [--boundary_layer_imprint_tags <list>] \
+        [--boundary_layer_geometric_progression <real>] \
+        [--boundary_layer_max_element_angle <size>] \
+        [--normal_direction <dir>] [--gradation <real>] \
+        [--element_generation <type>] [--collision_mode <mode>] \
+        [--add_multinormals <yes|no>] [--multinormal_angle_threshold <angle>] \
+        [--smooth_normals <yes|no>] [--optimisation <type>]
+
+  -h --help
+          prints this help.
+
+  -v --verbose <verbose>
+          Sets the verbosity level parameter.
+          The <verbose> parameter must be in the range 0 to 10:
+            0 : no detail
+            10 : very detailed
+          Default: 3
+
+  -i --in <filein>
+          Sets the input file.
+          (MANDATORY)
+
+  -o --out <fileout>
+          Sets the output file.
+          If unset, _hybrid is appended to the input file basename.
+          Using an existing file is forbidden.
+          Using the same file as --in is forbidden.
+
+     --global_physical_size <size>
+          Sets the global physical size.
+          Default: no default.
+
+     --max_number_of_threads <maxthreads>
+          Sets the maximum number of threads to be used in parallel.
+          Default: 4
+
+     --boundary_layer_size_mode <mode>
+          Sets the behavior for the boundary layer sizes.
+          If <mode> is:
+            global: the boundary_layer_global_initial_height is used to compute
+             the layer heights
+            local: the boundary_layer_surface_tags and
+             boundary_layer_initial_height_on_surface_tags are used to compute
+             the layer heights
+          Default: global
+
+     --number_of_boundary_layers <number>
+          Sets the number of boundary layers.
+          Default: 0
+
+     --boundary_layer_global_initial_height <height>
+          Sets the height of the first layer.
+
+     --boundary_layer_surface_tags <list>
+          Comma separated list of surface references to be used to grow
+          boundary layers.
+
+     --boundary_layer_initial_height_on_surface_tags <list>
+          Comma separated list of initial heights to be used to grow boundary
+          layers.
+
+     --boundary_layer_imprint_tags <list>
+          Comma separated list of surface references that are imprinted by
+          boundary layers.
+
+     --boundary_layer_geometric_progression <real>
+          Sets the geometric progression for all the boundary layer growths
+          (position of layer number i is h * g^(i-1)).
+          Default: 1.0
+
+     --boundary_layer_max_element_angle <size>
+          Sets the maximum internal angles of elements (in degree). This
+          setting applies to the boundary layer elements only.
+          Default: 165.
+
+     --normal_direction <dir>
+          Specifies whether mg-hybrid should use the surface normals or the
+          inverse of the surface normals.
+          if <dir> is:
+             1 : means the layers grow in the same direction as the normals to
+             the surface
+            -1 : means the layers grow in the opposite direction to the normals
+             of the surface
+          Default: 1
+
+     --gradation <real>
+          Sets the desired maximum ratio between 2 adjacent edges. It applies
+          only to the edges which belong to the tetrahedra.
+          Default: 2.0
+
+     --element_generation <type>
+          Sets the element type for the mesh generation.
+          If <type> is:
+            tetra_dominant : prismatic or hexahedral elements in the boundary
+             layers, tetrahedra in the remaining volume
+            hexa_dominant : prismatic or hexahedral elements in the boundary
+             layers, mixture of hexahedra and tetrahedra in the remaining
+             volume
+            cartesian_core : cartesian hexa core with tetrahedra and pyramids
+             in the remaining volume
+            extrusion_only : only prismatic or hexahedral elements near the
+             boundary are generated. The remaining volume is not filled.
+          Default: tetra_dominant
+
+     --collision_mode <mode>
+          Sets the behavior in case of collision between layers.
+          If <mode> is:
+            decrease : keeps the number of desired layer but decreases the
+             height of the layers to avoid any collision
+            stop : stops locally the generation of layers to avoid collisions;
+             the number of generated layers may differ from the specified
+             desired number
+          Default: stop
+
+     --add_multinormals <yes|no>
+          Add extra normals at opening ridges and corners.
+          Default: no
+
+     --multinormal_angle_threshold <angle>
+          Set the maximum angle between the multiple normals at opening ridges.
+          Default: 30
+
+     --smooth_normals <yes|no>
+          Smooth normals at closed ridges and corners.
+          Default: no
+
+     --optimisation <type>
+          sets the optimisation type.
+          If <type> is:
+              no : no optimisation is applied
+             yes : optimisation is performed upon mesh generation 
+            only : only optimisation is performed to an existing volume mesh.
+          Default: yes.
+
+
+================================================================================
+                 MG-Hybrid -- MeshGems 2.1-11 (September, 2015)
+        END OF SESSION - MG-Hybrid (Copyright 2014-2015 by Distene SAS)
+                   compiled Sep  3 2015 13:52:38 on Linux_64
+               MeshGems is a Registered Trademark of Distene SAS
+================================================================================
+       ( Distene SAS
+        Phone: +33(0)970-650-219   Fax: +33(0)169-269-033
+        EMail: <support@distene.com> )
+
+\endverbatim
+\n
+- <b>Limitations</b> - Some of the MG-Hybrid parameters can not be changed in SALOME and are set to their default values. The parameters concerned are the following : global_physical_size, boundary_layer_size_mode, boundary_layer_initial_height_on_surface_tags, boundary_layer_max_element_angle and optimisation.
+
+\ref hybrid_top "Back to top"
+
+\section hybrid_advanced_parameters Advanced parameters
+
+\image html hybrid_hypothesis_advanced.png
+
+\subsection log Logs and debug
+
+- <b>Working directory</b> - allows defining the folder for input and output
+files of hybrid software, which are the files starting with "HYBRID_" prefix.
+
+- <b>Verbose level</b> - to choose verbosity level in the range from
+0 to 10.
+
+  - 0, no standard output,
+
+  - 2, prints the data, quality statistics of the skin and final
+  meshes and indicates when the final mesh is being saved. In addition
+  the software gives indication regarding the CPU time.
+
+  - 10, same as 2 plus the main steps in the computation, quality
+  statistics histogram of the skin mesh, quality statistics histogram
+  together with the characteristics of the final mesh.
+  
+- <b>Print log in a file</b> - if this option is checked on the log is printed in a 
+file placed in the working directory, otherwise it is printed on the standard output.
+
+- <b>Remove log on success</b> - if this option is checked on the log file is kept only
+if an error occurs during the computation. This option is only available if <b>Print log in a file</b>
+is enabled (there must be a log file to delete it) and <b>Keep all working files</b> is disabled 
+(in this case the log file is always kept). 
+
+- <b>Keep all working files</b> - allows checking input and output files
+of hybrid software, while usually these files are removed after the
+launch of the mesher. The log file (if any) is also kept if this option is checked.
+
+\subsection advanced_meshing_options Advanced meshing options
+
+- A table allows to input in the command line any text
+for hybrid argument from "mg-hybrid.exe help", and future advanced options... <br> 
+<b>Add option</b> - adds a line to the table where you can type an option and its value as text.
+A check box in the first column activates/deactivates the option of the current row. A deactivated option will be erased upon pressing \a Ok.
+
+
+\ref hybrid_top "Back to top"
+
+\section hybrid_layers_meshes Layers meshes
+
+\image html hybrid_hypothesis_layers.png
+
+HYBRID algorithm mesh layers on groups of faces. If <b>Mesh layers on all wrap</b>
+is checked, all wrap is meshed as layers (as boundary_layers_surface_ids 5), else
+only submeshes selected an added are meshed as layers (as boundary_layers_surface_ids 6).
+Pay attention: theses groups should be defined
+into the shell mesh from a previous group defined in the geometry.
+
+
+<br><b>See Also</b> a sample TUI Script of the \ref tui_hybrid "creation of a MG-Hybrid hypothesis".
+
+\ref hybrid_top "Back to top"
+
+*/

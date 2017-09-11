@@ -1,0 +1,3 @@
+[SALOME ATOMIC] : @SALOMEATOMIC_VERSION@
+[DEVELOPMENT]   : @SALOMEATOMIC_VERSION_DEV@
+[DESCRIPTION]   : This is sample of "light" (w/o CORBA engine) SALOME module (part of SALOME tutorial)
